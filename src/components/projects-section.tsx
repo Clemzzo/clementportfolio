@@ -27,7 +27,7 @@ const projects = [
     id: 3,
     title: 'ExpenseAI',
     category: 'AI / Fintech',
-    description: 'Intelligent expense tracking utilizing AI to analyze spending patterns and provide actionable financial advice.',
+    description: 'AI powered expense tracking  web application utilizing AI to analyze spending patterns and provide actionable financial advice.',
     image: '/expense.png',
     technologies: ['Node.js', 'Firebase', 'Shadcn'],
     liveUrl: 'https://expense-ai-ebon.vercel.app/',
