@@ -30,7 +30,7 @@ const projects = [
     description: 'Intelligent expense tracking utilizing AI to analyze spending patterns and provide actionable financial advice.',
     image: '/expense.png',
     technologies: ['Node.js', 'Firebase', 'Shadcn'],
-    liveUrl: 'https://traefp8jjmzm.vercel.app/',
+    liveUrl: 'https://expense-ai-ebon.vercel.app/',
   },
 ]
 
@@ -46,7 +46,7 @@ export default function ProjectsSection() {
         >
           <div className="space-y-4">
             <h2 className="text-4xl md:text-6xl font-extrabold text-white tracking-tight">
-              Case <span className="text-primary italic">Studies</span>
+              Selected <span className="text-primary italic">Projects</span>
             </h2>
             <p className="text-gray-400 text-lg max-w-lg">
               A curated selection of digital products built with performance and user experience at the core.
