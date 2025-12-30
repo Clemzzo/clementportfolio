@@ -268,6 +268,128 @@ export default function HeroSection() {
           />
         </div>
       </motion.div>
+
+      {/* Floating Icons */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Left Side Icons */}
+        <FloatingIcon
+          delay={0}
+          className="top-[15%] left-[3%] md:top-[20%] md:left-[10%]"
+          icon={<NextJsIcon className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 text-white/15 md:text-white/20" />}
+        />
+        <FloatingIcon
+          delay={0.5}
+          className="top-[45%] left-[5%] md:top-[50%] md:left-[15%]"
+          icon={<SupabaseIcon className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 text-emerald-500/15 md:text-emerald-500/20" />}
+        />
+        <FloatingIcon
+          delay={1}
+          className="top-[75%] left-[2%] md:top-[70%] md:left-[8%]"
+          icon={<TailwindIcon className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 text-sky-400/15 md:text-sky-400/20" />}
+        />
+
+        {/* Right Side Icons */}
+        <FloatingIcon
+          delay={0.2}
+          className="top-[18%] right-[3%] md:top-[25%] md:right-[12%]"
+          icon={<ReactIcon className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 text-sky-500/15 md:text-sky-500/20" />}
+        />
+        <FloatingIcon
+          delay={0.7}
+          className="top-[50%] right-[2%] md:top-[45%] md:right-[8%]"
+          icon={<Github className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 text-white/15 md:text-white/20" />}
+        />
+        <FloatingIcon
+          delay={1.2}
+          className="top-[80%] right-[5%] md:top-[75%] md:right-[15%]"
+          icon={<FirebaseIcon className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 text-orange-500/15 md:text-orange-500/20" />}
+        />
+      </div>
     </section>
+  )
+}
+
+function FloatingIcon({ icon, className, delay = 0 }: { icon: React.ReactNode, className: string, delay?: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{
+        opacity: 1,
+        scale: 1,
+        y: [0, -20, 0],
+        rotate: [0, 10, -10, 0]
+      }}
+      transition={{
+        duration: 4,
+        repeat: Infinity,
+        repeatType: "reverse",
+        ease: "easeInOut",
+        delay
+      }}
+      className={`absolute z-0 ${className} p-4 glass rounded-2xl border-white/5 backdrop-blur-sm`}
+    >
+      {icon}
+    </motion.div>
+  )
+}
+
+function ReactIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="-11.5 -10.23174 23 20.46348" className={className}>
+      <circle cx="0" cy="0" r="2.05" fill="currentColor" />
+      <g stroke="currentColor" strokeWidth="1" fill="none">
+        <ellipse rx="11" ry="4.2" />
+        <ellipse rx="11" ry="4.2" transform="rotate(60)" />
+        <ellipse rx="11" ry="4.2" transform="rotate(120)" />
+      </g>
+    </svg>
+  )
+}
+
+function NextJsIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 180 180" className={className} fill="none">
+      <mask id="mask0_next" style={{ maskType: 'alpha' }} maskUnits="userSpaceOnUse" x="0" y="0" width="180" height="180">
+        <circle cx="90" cy="90" r="90" fill="black" />
+      </mask>
+      <g mask="url(#mask0_next)">
+        <circle cx="90" cy="90" r="90" fill="black" />
+        <path d="M149.508 157.52L69.142 54H54V125.97H66.1136V69.1836L134.452 157.482C139.201 154.557 143.585 151.205 147.535 147.458L149.508 157.52Z" fill="white" />
+        <path d="M115.245 54H102V125.967H115.245V54Z" fill="url(#paint0_linear_next)" />
+      </g>
+      <defs>
+        <linearGradient id="paint0_linear_next" x1="109" y1="67" x2="109" y2="125" gradientUnits="userSpaceOnUse">
+          <stop stopColor="white" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+    </svg>
+  )
+}
+
+function FirebaseIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 32 32" className={className}>
+      <path d="M5.992 23.328l1.528-9.616 1.832-3.416c.168-.312.6-.312.768 0l1.832 3.416z" fill="#FFC107" />
+      <path d="M16 4.968l-2.488 4.72-2.312 4.392-1.832-3.416c-.168-.312-.6-.312-.768 0L5.992 23.328 16 12.04z" fill="#FFA000" />
+      <path d="M26.008 23.328l-4.144-14.776c-.088-.312-.52-.36-.672-.08l-5.192 9.568z" fill="#F4B400" />
+      <path d="M16 12.04l-7.368 11.288-1.528 2.504c-.16.272.04.608.352.608h17.088c.312 0 .512-.336.352-.608l-1.528-2.504z" fill="#FF8F00" />
+    </svg>
+  )
+}
+
+function SupabaseIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="currentColor">
+      <path d="M21.362 9.354H12V.338a.342.342 0 00-.596-.227L2.4 11.166a.425.425 0 00.31.734h9.362v9.016a.342.342 0 00.596.227L22.012 10.08a.425.425 0 00-.65-.726z" />
+    </svg>
+  )
+}
+
+function TailwindIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="currentColor">
+      <path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624-1.177-1.194-2.538-2.576-5.512-2.576z" />
+    </svg>
   )
 }
