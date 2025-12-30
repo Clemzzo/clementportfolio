@@ -192,7 +192,7 @@ export default function HeroSection() {
               transition={{ delay: 0.4 }}
               className="text-xl md:text-2xl text-gray-400 font-medium max-w-2xl mx-auto leading-relaxed"
             >
-              Software Engineer crafting <span className="text-white">premium digital experiences</span> with React, Next.js, and Mobile technologies.
+              Software Developer crafting <span className="text-white">premium digital experiences</span> with React, Next.js, and Mobile technologies.
             </motion.p>
           </div>
 
