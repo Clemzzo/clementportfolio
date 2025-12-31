@@ -69,7 +69,7 @@ export default function ContactSection() {
                 <span className="text-primary italic">Something Great</span>
               </h2>
               <p className="text-gray-400 text-lg max-w-md">
-                I&apos;m currently available for freelance work and full-time positions. If you have a project in mind, let&apos;s talk.
+                I'm currently available for freelance work and full-time positions. If you have a project in mind, let&apos;s talk.
               </p>
             </div>
 
@@ -112,7 +112,7 @@ export default function ContactSection() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    placeholder="John Doe"
+                    placeholder="Enter full name"
                     className="h-14 rounded-2xl glass border-white/5 focus:border-primary/50 text-white placeholder:text-gray-600"
                   />
                 </div>
@@ -124,7 +124,7 @@ export default function ContactSection() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    placeholder="john@example.com"
+                    placeholder="Enter email address"
                     className="h-14 rounded-2xl glass border-white/5 focus:border-primary/50 text-white placeholder:text-gray-600"
                   />
                 </div>
