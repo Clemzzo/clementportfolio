@@ -8,7 +8,48 @@ import { Textarea } from '@/components/ui/textarea'
 import { Mail, Phone, MapPin, Send, MessageSquare } from 'lucide-react'
 
 export default function ContactSection() {
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  })
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }))
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setStatus('loading')
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          subject: `New Message from ${formData.name}`
+        })
+      })
+
+      if (res.ok) {
+        setStatus('success')
+        setFormData({ name: '', email: '', message: '' })
+        setTimeout(() => setStatus('idle'), 3000)
+      } else {
+        setStatus('error')
+        setTimeout(() => setStatus('idle'), 3000)
+      }
+    } catch (error) {
+      console.error(error)
+      setStatus('error')
+      setTimeout(() => setStatus('idle'), 3000)
+    }
+  }
 
   return (
     <section id="contact" className="py-24 relative overflow-hidden">
@@ -62,11 +103,15 @@ export default function ContactSection() {
               <MessageSquare className="w-8 h-8 text-primary" />
             </div>
 
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-xs font-bold uppercase tracking-widest text-gray-400 ml-1">Name</label>
                   <Input
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
                     placeholder="John Doe"
                     className="h-14 rounded-2xl glass border-white/5 focus:border-primary/50 text-white placeholder:text-gray-600"
                   />
@@ -74,8 +119,12 @@ export default function ContactSection() {
                 <div className="space-y-2">
                   <label className="text-xs font-bold uppercase tracking-widest text-gray-400 ml-1">Email</label>
                   <Input
-                    placeholder="john@example.com"
+                    name="email"
                     type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    placeholder="john@example.com"
                     className="h-14 rounded-2xl glass border-white/5 focus:border-primary/50 text-white placeholder:text-gray-600"
                   />
                 </div>
@@ -84,6 +133,10 @@ export default function ContactSection() {
               <div className="space-y-2">
                 <label className="text-xs font-bold uppercase tracking-widest text-gray-400 ml-1">Message</label>
                 <Textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
                   placeholder="Tell me about your project..."
                   rows={5}
                   className="rounded-2xl glass border-white/5 focus:border-primary/50 text-white placeholder:text-gray-600 py-4"
@@ -91,12 +144,20 @@ export default function ContactSection() {
               </div>
 
               <Button
+                type="submit"
                 className="w-full h-14 rounded-2xl bg-white text-black font-bold hover:scale-[1.02] transition-transform flex gap-2"
-                disabled={isSubmitting}
+                disabled={status === 'loading'}
               >
-                Send Message
+                {status === 'loading' ? 'Sending...' : 'Send Message'}
                 <Send className="w-4 h-4" />
               </Button>
+
+              {status === 'success' && (
+                <p className="text-green-400 text-sm text-center">Message sent successfully!</p>
+              )}
+              {status === 'error' && (
+                <p className="text-red-400 text-sm text-center">Failed to send message. Please try again.</p>
+              )}
             </form>
           </motion.div>
         </div>
