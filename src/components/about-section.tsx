@@ -43,7 +43,7 @@ export default function AboutSection() {
                 I&apos;m a <span className="text-white font-semibold">Full Stack Developer</span> with a passion for building software that feels as good as it looks. With over 3 years of experience, I&apos;ve specialized in translating complex business requirements into seamless digital experiences.
               </p>
               <p className="text-gray-400 leading-relaxed">
-                My approach combines <span className="text-primary">technical precision</span> with <span className="text-primary">creative problem-solving</span>. Whether it&apos;s a high-performance web application or a cross-platform mobile app, I focus on clean architecture and user-centric design.
+                My approach combines <span className="text-primary">technical precision</span> with <span className="text-primary">creative problem-solving</span>. Whether it's a high-performance web application or a cross-platform mobile app, I focus on clean architecture and user-centric design.
               </p>
 
               <div className="pt-6 flex flex-wrap gap-3">
@@ -90,7 +90,7 @@ export default function AboutSection() {
           >
             {[
               { icon: Zap, title: 'Speed', desc: 'Optimized for performance and fast loading times.' },
-              { icon: Globe, title: 'Modern', desc: 'Using the latest tech stacks like Next.js 16.' },
+              { icon: Globe, title: 'Modern', desc: 'Using the latest tech stacks like Next.js 16 and React.' },
               { icon: Zap, title: 'Responsive', desc: 'Flawless experience across all device sizes.' },
             ].map((feature, i) => (
               <div key={i} className="glass-card rounded-2xl p-6 border-white/5 hover:border-primary/20">
