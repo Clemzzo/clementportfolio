@@ -13,6 +13,7 @@ export type Project = {
   image: string
   technologies: string[]
   liveUrl: string
+  repoUrl?: string
   features: ProjectFeature[]
 }
 
@@ -25,7 +26,7 @@ export const projects: Project[] = [
     description:
       'Premium food delivery solution with real-time tracking, restaurant analytics, and seamless payment integration.',
     overview:
-      'Foody Express is a native mobile experience built for customers who expect speed, clarity, and polish from the moment they open the app. Every interaction — from browsing menus from different restaurants to placing an order was designed to feel instant and effortless, while the restaurant-side tooling gives operators the data they need to run a tight kitchen.',
+      'Foody Express is a native mobile experience built for customers who expect speed, clarity, and polish from the moment they open the app. Every interaction — from browsing menus across different restaurants to placing an order — was designed to feel instant and effortless, while the restaurant-side tooling gives operators the data they need to run a tight kitchen.',
     image: '/Cover.png',
     technologies: ['React Native', 'TypeScript', 'Expo', 'PayStack'],
     liveUrl:

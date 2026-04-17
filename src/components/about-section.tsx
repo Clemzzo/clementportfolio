@@ -2,10 +2,12 @@
 
 import { motion } from 'framer-motion'
 import { Monitor, Smartphone, Server } from 'lucide-react'
+import { fadeInUp } from '@/lib/motion'
+import { projects } from '@/lib/projects'
 
 const stats = [
   { value: '3+', label: 'Years Experience' },
-  { value: '3+', label: 'Projects Shipped' },
+  { value: `${projects.length}`, label: 'Projects Shipped' },
   { value: '100%', label: 'Client Satisfaction' },
   { value: '2', label: 'Platforms' },
 ]
@@ -37,12 +39,7 @@ export default function AboutSection() {
       <div className="max-w-6xl mx-auto px-6">
 
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-14"
-        >
+        <motion.div {...fadeInUp} className="mb-14">
           <span className="text-blue-600 text-sm font-semibold uppercase tracking-wider">About</span>
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mt-2 tracking-tight">
             Story Behind The Code
@@ -54,9 +51,7 @@ export default function AboutSection() {
 
           {/* Bio */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            {...fadeInUp}
             className="lg:col-span-7 bg-white rounded-2xl p-8 border border-slate-200 flex flex-col justify-between"
           >
             <div>
@@ -87,9 +82,7 @@ export default function AboutSection() {
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                {...fadeInUp}
                 transition={{ delay: index * 0.07 }}
                 className="bg-blue-600 rounded-2xl p-6 border border-blue-600 flex flex-col justify-center"
               >
@@ -105,9 +98,7 @@ export default function AboutSection() {
           {services.map((service, index) => (
             <motion.div
               key={service.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              {...fadeInUp}
               transition={{ delay: index * 0.08 }}
               className="bg-white rounded-2xl p-7 border border-slate-200 hover:border-blue-200 hover:shadow-sm transition-all duration-200 group"
             >

@@ -6,6 +6,8 @@ import { ArrowUpRight, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-rea
 import Image from 'next/image'
 import Link from 'next/link'
 import { projects, type Project } from '@/lib/projects'
+import { GithubIcon } from '@/components/icons'
+import { fadeInUp } from '@/lib/motion'
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const [expanded, setExpanded] = useState(false)
@@ -32,9 +34,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
   return (
     <motion.article
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
+      {...fadeInUp}
       transition={{ delay: index * 0.08 }}
       className="group relative flex flex-col bg-white rounded-2xl border border-slate-200/80 overflow-hidden hover:border-slate-300 hover:shadow-xl hover:shadow-slate-900/5 transition-all duration-300 shrink-0 w-[85vw] sm:w-[340px] md:w-[360px] snap-start"
     >
@@ -109,19 +109,21 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             Live Site
             <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
           </a>
-          <span className="text-slate-300">·</span>
-          <a
-            href="https://github.com/clemzzo"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="View on GitHub"
-            className="inline-flex items-center gap-1.5 text-[13px] font-medium text-slate-500 hover:text-slate-900 transition-colors"
-          >
-            <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
-            </svg>
-            Source
-          </a>
+          {project.repoUrl && (
+            <>
+              <span className="text-slate-300">·</span>
+              <a
+                href={project.repoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="View on GitHub"
+                className="inline-flex items-center gap-1.5 text-[13px] font-medium text-slate-500 hover:text-slate-900 transition-colors"
+              >
+                <GithubIcon className="w-3.5 h-3.5" />
+                Source
+              </a>
+            </>
+          )}
         </div>
       </div>
     </motion.article>
@@ -163,12 +165,7 @@ export default function ProjectsSection() {
     <section id="projects" className="py-24 bg-slate-50/50">
       <div className="max-w-6xl mx-auto px-6">
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12"
-        >
+        <motion.div {...fadeInUp} className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
             <span className="text-blue-600 text-sm font-semibold uppercase tracking-wider">Work</span>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mt-2 tracking-tight">

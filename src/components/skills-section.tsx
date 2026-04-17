@@ -1,47 +1,54 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import { Code, Database, Server, Layout, Cpu, Wrench } from 'lucide-react'
+import { fadeInUp } from '@/lib/motion'
 
-const TechIcon = ({ name, color }: { name: string; color: string }) => {
-  switch (name) {
-    case 'React':
-    case 'React Native':
-      return (
-        <svg viewBox="0 0 100 100" className="w-4 h-4" fill={color}>
-          <circle cx="50" cy="50" r="10" />
-          <ellipse cx="50" cy="50" rx="40" ry="15" fill="none" stroke={color} strokeWidth="2" />
-          <ellipse cx="50" cy="50" rx="40" ry="15" fill="none" stroke={color} strokeWidth="2" transform="rotate(60 50 50)" />
-          <ellipse cx="50" cy="50" rx="40" ry="15" fill="none" stroke={color} strokeWidth="2" transform="rotate(120 50 50)" />
-        </svg>
-      )
-    case 'Next.js': return <img src="/next.svg" alt="" className="w-4 h-4" />
-    case 'Vercel': return <img src="/vercel.svg" alt="" className="w-4 h-4" />
-    case 'Express': return <img src="/expressjs.svg" alt="" className="w-4 h-4" />
-    case 'JWT': return <img src="/jwtlogo.svg" alt="" className="w-4 h-4" />
-    case 'REST API': return <img src="/restapi.svg" alt="" className="w-4 h-4" />
-    case 'TypeScript': return <img src="/typscript.svg" alt="" className="w-4 h-4" />
-    case 'Tailwindcss': return <img src="/tailwindcss.svg" alt="" className="w-4 h-4" />
-    case 'NativeWind': return <img src="/nativewind.svg" alt="" className="w-4 h-4" />
-    case 'Framer Motion': return <img src="/framermotion.svg" alt="" className="w-4 h-4" />
-    case 'Reanimated': return <img src="/react.svg" alt="" className="w-4 h-4" />
-    case 'Expo': return <img src="/expo.svg" alt="" className="w-4 h-4" />
-    case 'Node.js': return <img src="/nodejs.svg" alt="" className="w-4 h-4" />
-    case 'Shadcn UI': return <img src="/shadcn.svg" alt="" className="w-4 h-4" />
-    case 'Firebase': return <img src="/firebase.svg" alt="" className="w-4 h-4" />
-    case 'FirebaseDB': return <img src="/firebasedb.svg" alt="" className="w-4 h-4" />
-    case 'PostgreSQL': return <img src="/postgresql.svg" alt="" className="w-4 h-4" />
-    case 'Supabase': return <img src="/supabase.svg" alt="" className="w-4 h-4" />
-    case 'MongoDB': return <img src="/mongo.svg" alt="" className="w-4 h-4" />
-    case 'Cloudflare': return <img src="/cloudflare.svg" alt="" className="w-4 h-4" />
-    case 'GitHub': return <img src="/github.svg" alt="" className="w-4 h-4" />
-    case 'Postman': return <img src="/postman.svg" alt="" className="w-4 h-4" />
-    case 'VS Code': return <img src="/vscode.svg" alt="" className="w-4 h-4" />
-    case 'NPM': return <img src="/npm.svg" alt="" className="w-4 h-4" />
-    case 'Git': return <img src="/git.svg" alt="" className="w-4 h-4" />
-    case 'Figma': return <img src="/figma.svg" alt="" className="w-4 h-4" />
-    default: return <Code className="w-4 h-4" style={{ color }} />
+const TECH_ICONS: Record<string, string> = {
+  'Next.js': '/next.svg',
+  'Vercel': '/vercel.svg',
+  'Express': '/expressjs.svg',
+  'JWT': '/jwtlogo.svg',
+  'REST API': '/restapi.svg',
+  'Stripe': '/stripe.svg',
+  'Sentry': '/sentry.svg',
+  'TypeScript': '/typscript.svg',
+  'Tailwindcss': '/tailwindcss.svg',
+  'NativeWind': '/nativewind.svg',
+  'Framer Motion': '/framermotion.svg',
+  'Reanimated': '/react.svg',
+  'Expo': '/expo.svg',
+  'Node.js': '/nodejs.svg',
+  'Shadcn UI': '/shadcn.svg',
+  'Firebase': '/firebase.svg',
+  'FirebaseDB': '/firebasedb.svg',
+  'PostgreSQL': '/postgresql.svg',
+  'Supabase': '/supabase.svg',
+  'MongoDB': '/mongo.svg',
+  'Cloudflare': '/cloudflare.svg',
+  'GitHub': '/github.svg',
+  'Postman': '/postman.svg',
+  'VS Code': '/vscode.svg',
+  'NPM': '/npm.svg',
+  'Git': '/git.svg',
+  'Figma': '/figma.svg',
+}
+
+function TechIcon({ name, color }: { name: string; color: string }) {
+  if (name === 'React' || name === 'React Native') {
+    return (
+      <svg viewBox="0 0 100 100" className="w-4 h-4" fill={color}>
+        <circle cx="50" cy="50" r="10" />
+        <ellipse cx="50" cy="50" rx="40" ry="15" fill="none" stroke={color} strokeWidth="2" />
+        <ellipse cx="50" cy="50" rx="40" ry="15" fill="none" stroke={color} strokeWidth="2" transform="rotate(60 50 50)" />
+        <ellipse cx="50" cy="50" rx="40" ry="15" fill="none" stroke={color} strokeWidth="2" transform="rotate(120 50 50)" />
+      </svg>
+    )
   }
+  const src = TECH_ICONS[name]
+  if (src) return <Image src={src} alt="" width={16} height={16} className="w-4 h-4" />
+  return <Code className="w-4 h-4" style={{ color }} />
 }
 
 const skillCategories = [
@@ -77,6 +84,8 @@ const skillCategories = [
       { name: 'Node.js', color: '#339933' },
       { name: 'Express', color: '#000000' },
       { name: 'REST API', color: '#61DAFB' },
+      { name: 'Stripe', color: '#635BFF' },
+      { name: 'Sentry', color: '#362D59' },
       { name: 'Firebase', color: '#FFCA28' },
       { name: 'JWT', color: '#000000' },
     ],
@@ -103,12 +112,7 @@ export default function SkillsSection() {
     <section id="skills" className="py-24 bg-white">
       <div className="max-w-6xl mx-auto px-6">
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-16 max-w-2xl"
-        >
+        <motion.div {...fadeInUp} className="mb-16 max-w-2xl">
           <span className="text-blue-600 text-sm font-semibold uppercase tracking-wider">Stack</span>
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mt-2 tracking-tight">
             Tech Arsenal
@@ -123,9 +127,7 @@ export default function SkillsSection() {
           {skillCategories.map((category, index) => (
             <motion.div
               key={category.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              {...fadeInUp}
               transition={{ delay: index * 0.08 }}
               className="group relative bg-white rounded-2xl p-7 border border-slate-200/80 hover:border-slate-300 hover:shadow-xl hover:shadow-slate-900/[0.04] transition-all duration-300"
             >
@@ -162,9 +164,7 @@ export default function SkillsSection() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          {...fadeInUp}
           className="mt-5 bg-white rounded-2xl p-7 border border-slate-200/80 hover:border-slate-300 hover:shadow-xl hover:shadow-slate-900/[0.04] transition-all duration-300"
         >
           <div className="flex items-start gap-4 mb-6">

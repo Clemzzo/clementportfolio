@@ -1,11 +1,13 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
-import { Mail, Phone, MapPin, Send, ArrowUpRight, CheckCircle2, AlertCircle } from 'lucide-react'
+import { Send, ArrowUpRight, CheckCircle2, AlertCircle } from 'lucide-react'
+import { contactItems } from '@/lib/contact'
+import { fadeInUp } from '@/lib/motion'
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' })
@@ -14,6 +16,12 @@ export default function ContactSection() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }))
   }
+
+  useEffect(() => {
+    if (status !== 'success' && status !== 'error') return
+    const t = setTimeout(() => setStatus('idle'), 3000)
+    return () => clearTimeout(t)
+  }, [status])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -27,34 +35,20 @@ export default function ContactSection() {
       if (res.ok) {
         setStatus('success')
         setFormData({ name: '', email: '', message: '' })
-        setTimeout(() => setStatus('idle'), 3000)
       } else {
         setStatus('error')
-        setTimeout(() => setStatus('idle'), 3000)
       }
     } catch (error) {
       console.error(error)
       setStatus('error')
-      setTimeout(() => setStatus('idle'), 3000)
     }
   }
-
-  const contactItems = [
-    { icon: Mail, label: 'Email', value: 'clemento444@gmail.com', href: 'mailto:clemento444@gmail.com' },
-    { icon: Phone, label: 'Phone', value: '+234 813 265 2982', href: 'tel:+2348132652982' },
-    { icon: MapPin, label: 'Location', value: 'Lagos, Nigeria', href: '#' },
-  ]
 
   return (
     <section id="contact" className="py-24 bg-slate-50/50">
       <div className="max-w-6xl mx-auto px-6">
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-16 max-w-2xl"
-        >
+        <motion.div {...fadeInUp} className="mb-16 max-w-2xl">
           <span className="text-blue-600 text-sm font-semibold uppercase tracking-wider">Contact</span>
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mt-2 tracking-tight">
             Let&apos;s Work Together
@@ -67,12 +61,7 @@ export default function ContactSection() {
 
         <div className="grid lg:grid-cols-5 gap-6">
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="lg:col-span-2 space-y-4"
-          >
+          <motion.div {...fadeInUp} className="lg:col-span-2 space-y-4">
             <div className="bg-white rounded-2xl p-7 border border-slate-200/80">
               <p className="text-slate-600 text-[15px] leading-relaxed">
                 Currently open to freelance projects and full-time roles in frontend, full-stack, and mobile development.
@@ -105,9 +94,7 @@ export default function ContactSection() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            {...fadeInUp}
             transition={{ delay: 0.1 }}
             className="lg:col-span-3 bg-white rounded-2xl p-8 border border-slate-200/80"
           >
@@ -160,7 +147,7 @@ export default function ContactSection() {
               <div className="flex flex-col sm:flex-row sm:items-center gap-4 pt-2">
                 <Button
                   type="submit"
-                  className="group h-11 px-6 rounded-lg bg-blue-600 hover:bg-slate-800 text-white font-semibold gap-2 shrink-0"
+                  className="group h-11 px-6 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold gap-2 shrink-0"
                   disabled={status === 'loading'}
                 >
                   {status === 'loading' ? 'Sending…' : 'Send Message'}
