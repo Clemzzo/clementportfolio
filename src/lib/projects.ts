@@ -25,7 +25,7 @@ export const projects: Project[] = [
     description:
       'Premium food delivery solution with real-time tracking, restaurant analytics, and seamless payment integration.',
     overview:
-      'Foody Express is a native mobile experience built for customers who expect speed, clarity, and polish from the moment they open the app. Every interaction — from browsing menus to tracking a rider in real time — was designed to feel instant and effortless, while the restaurant-side tooling gives operators the data they need to run a tight kitchen.',
+      'Foody Express is a native mobile experience built for customers who expect speed, clarity, and polish from the moment they open the app. Every interaction — from browsing menus from different restaurants to placing an order was designed to feel instant and effortless, while the restaurant-side tooling gives operators the data they need to run a tight kitchen.',
     image: '/Cover.png',
     technologies: ['React Native', 'TypeScript', 'Expo', 'PayStack'],
     liveUrl:
@@ -64,7 +64,7 @@ export const projects: Project[] = [
     title: 'ExpenseAI',
     category: 'Web App',
     description:
-      'AI powered expense tracking web application utilizing AI to analyze spending patterns and provide actionable financial advice.',
+      'ExpenseAI is an AI powered Expense tracking App that helps you control your spending, manage your expenses, Create Budgets and gives you best suggestions on how to minimise expenses.',
     overview:
       'ExpenseAI turns everyday transactions into clear, actionable insights. It combines automatic categorization, pattern detection, and AI-driven advice to help users understand where their money actually goes and what to do about it through a clean, data-rich dashboard.',
     image: '/expense.png',
@@ -73,6 +73,7 @@ export const projects: Project[] = [
       'React',
       'Next.js',
       'TypeScript',
+      'Tailwind CSS',
       'Firebase',
       'Paystack',
       'Shadcn',
@@ -86,14 +87,14 @@ export const projects: Project[] = [
           'Detects recurring patterns, anomalies, and category trends to surface what matters.',
       },
       {
-        title: 'Smart auto-categorization',
+        title: 'Scan Receipt with AI',
         description:
-          'Incoming transactions are tagged automatically, with inline overrides when needed.',
+          'Scan your receipts and let AI extract the relevant information and automatically categorize your expenses.',
       },
       {
-        title: 'Actionable financial advice',
+        title: 'AI-powered insights',
         description:
-          'Personalized recommendations for saving, cutting back, and reaching goals faster.',
+          'Get personalized recommendations for saving, cutting back, and reaching goals faster.',
       },
       {
         title: 'Interactive dashboards',
@@ -104,6 +105,11 @@ export const projects: Project[] = [
         title: 'Secure authentication',
         description:
           'Firebase-backed auth with best-practice session handling and encrypted storage.',
+      },
+      {
+        title: 'Paystack Integration',
+        description:
+          'Paystack-backed payments for users in-app subscriptions',
       },
     ],
   },
@@ -122,6 +128,7 @@ export const projects: Project[] = [
       'React',
       'Next.js',
       'TypeScript',
+      'Tailwind CSS',
       'Shadcn',
       'Supabase',
       'Stripe',
