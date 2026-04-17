@@ -1,106 +1,132 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Award, Coffee, Users, Code, Sparkles, Zap, Globe } from 'lucide-react'
+import { Monitor, Smartphone, Server } from 'lucide-react'
 
 const stats = [
-  { icon: Code, label: 'Lines of Code', value: '50K+', color: 'text-emerald-400' },
-  { icon: Award, label: 'Experience', value: '3+ Yrs', color: 'text-blue-400' },
-  { icon: Users, label: 'Collaborations', value: '15+', color: 'text-purple-400' },
-  { icon: Coffee, label: 'Caffeine', value: '100% Opt', color: 'text-amber-400' },
+  { value: '3+', label: 'Years Experience' },
+  { value: '3+', label: 'Projects Shipped' },
+  { value: '100%', label: 'Client Satisfaction' },
+  { value: '2', label: 'Platforms' },
+]
+
+const services = [
+  {
+    icon: Monitor,
+    title: 'Web Development',
+    description: 'Pixel-perfect, performant web apps built with React and Next.js. From landing pages to complex dashboards and Admin dashboards.',
+    tags: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'PostgreSQL', 'Cloudflare'],
+  },
+  {
+    icon: Smartphone,
+    title: 'Mobile Apps',
+    description: 'Cross-platform mobile applications that feel native. Built with React Native and Expo for iOS and Android.',
+    tags: ['React Native', 'Expo', 'NativeWind'],
+  },
+  {
+    icon: Server,
+    title: 'Backend & APIs',
+    description: 'Scalable server-side systems and REST APIs. Integrated with modern databases and cloud infrastructure.',
+    tags: ['Node.js', 'Express', 'REST APIs', 'Supabase', 'PostgreSQL', 'Firebase', 'MongoDB'],
+  },
 ]
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-24 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-12 gap-8">
-          {/* Header & Bio */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="lg:col-span-12 mb-10"
-          >
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-              Story Behind The <span className="text-primary italic text-4xl md:text-6xl">Code</span>
-            </h2>
-          </motion.div>
+    <section id="about" className="py-24 bg-slate-50">
+      <div className="max-w-6xl mx-auto px-6">
 
-          {/* Main Info Card */}
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-14"
+        >
+          <span className="text-blue-600 text-sm font-semibold uppercase tracking-wider">About</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mt-2 tracking-tight">
+            Story Behind The Code
+          </h2>
+        </motion.div>
+
+        {/* Bio + Stats */}
+        <div className="grid lg:grid-cols-12 gap-6 mb-6">
+
+          {/* Bio */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-8 glass-card rounded-3xl p-8 md:p-10 relative overflow-hidden group"
+            className="lg:col-span-7 bg-white rounded-2xl p-8 border border-slate-200 flex flex-col justify-between"
           >
-            <div className="absolute top-0 right-0 p-6 opacity-20 group-hover:opacity-40 transition-opacity">
-              <Sparkles className="w-12 h-12 text-primary" />
+            <div>
+              <p className="text-lg text-slate-700 leading-relaxed mb-4">
+                I&apos;m a <span className="font-semibold text-slate-900">Full Stack Software Developer</span> with 3+ years of experience building web and mobile products for founders, startups, and growing businesses.
+              </p>
+              <p className="text-slate-500 leading-relaxed">
+                I take full ownership of the product lifecycle from system design, architecture, and API development to the final UI details that users interact with every day. As a full-stack engineer, I bring both technical depth and product sensibility to every project I work on.
+                I am committed to writing clean, maintainable code that is built to scale and delivered with precision. I specialize in taking products from concept to completion within 10 to 12 weeks, with rigorous testing and debugging embedded throughout the process not bolted on at the end.
+                Beyond the code, I am passionate about building software that solves real-world problems and creates meaningful impact for the people who use it.
+              </p>
             </div>
 
-            <div className="space-y-6 relative z-10">
-              <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
-                I&apos;m a <span className="text-white font-semibold">Full Stack Developer</span> with a passion for building software that feels as good as it looks. With over 3 years of experience, I&apos;ve specialized in translating complex business requirements into seamless digital experiences.
-              </p>
-              <p className="text-gray-400 leading-relaxed">
-                My approach combines <span className="text-primary">technical precision</span> with <span className="text-primary">creative problem-solving</span>. Whether it's a high-performance web application or a cross-platform mobile app, I focus on clean architecture and user-centric design.
-              </p>
-
-              <div className="pt-6 flex flex-wrap gap-3">
-                {['Creative', 'Strategic', 'Performant', 'Scalable'].map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-4 py-2 rounded-xl glass border-white/5 text-xs font-semibold text-gray-300 uppercase tracking-widest"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
+            <div className="flex flex-wrap gap-2 mt-8 pt-6 border-t border-slate-100">
+              {['Problem Solver', 'Clean Code', 'Ship Fast', 'Scalable Products'].map((tag) => (
+                <span
+                  key={tag}
+                  className="px-3 py-1.5 rounded-full bg-slate-100 text-slate-600 text-xs font-semibold uppercase tracking-wider"
+                >
+                  {tag}
+                </span>
+              ))}
             </div>
           </motion.div>
 
-          {/* Side Stats */}
-          <div className="lg:col-span-4 grid sm:grid-cols-2 lg:grid-cols-1 gap-6">
+          {/* Stats */}
+          <div className="lg:col-span-5 grid grid-cols-2 gap-4">
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="glass-card rounded-3xl p-6 flex items-center gap-4 hover:scale-[1.03]"
+                transition={{ delay: index * 0.07 }}
+                className="bg-blue-600 rounded-2xl p-6 border border-blue-600 flex flex-col justify-center"
               >
-                <div className={`p-3 rounded-2xl bg-white/5 border border-white/10 ${stat.color}`}>
-                  <stat.icon className="w-6 h-6" />
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-white">{stat.value}</div>
-                  <div className="text-sm text-gray-400 font-medium">{stat.label}</div>
-                </div>
+                <div className="text-3xl font-bold text-white mb-1">{stat.value}</div>
+                <div className="text-sm text-blue-100">{stat.label}</div>
               </motion.div>
             ))}
           </div>
-
-          {/* Technology Cards */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="lg:col-span-12 grid grid-cols-1 md:grid-cols-3 gap-6 mt-6"
-          >
-            {[
-              { icon: Zap, title: 'Speed', desc: 'Optimized for performance and fast loading times.' },
-              { icon: Globe, title: 'Modern', desc: 'Using the latest tech stacks like Next.js 16 and React.' },
-              { icon: Zap, title: 'Responsive', desc: 'Flawless experience across all device sizes.' },
-            ].map((feature, i) => (
-              <div key={i} className="glass-card rounded-2xl p-6 border-white/5 hover:border-primary/20">
-                <feature.icon className="w-8 h-8 text-primary mb-4" />
-                <h3 className="text-white font-bold mb-2">{feature.title}</h3>
-                <p className="text-gray-400 text-sm leading-relaxed">{feature.desc}</p>
-              </div>
-            ))}
-          </motion.div>
         </div>
+
+        {/* Services */}
+        <div className="grid md:grid-cols-3 gap-5">
+          {services.map((service, index) => (
+            <motion.div
+              key={service.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.08 }}
+              className="bg-white rounded-2xl p-7 border border-slate-200 hover:border-blue-200 hover:shadow-sm transition-all duration-200 group"
+            >
+              <div className="p-2.5 rounded-xl bg-blue-50 w-fit mb-5 group-hover:bg-blue-100 transition-colors">
+                <service.icon className="w-5 h-5 text-blue-600" />
+              </div>
+              <h3 className="text-base font-bold text-slate-900 mb-2">{service.title}</h3>
+              <p className="text-sm text-slate-500 leading-relaxed mb-5">{service.description}</p>
+              <div className="flex flex-wrap gap-1.5">
+                {service.tags.map((tag) => (
+                  <span key={tag} className="px-2.5 py-1 text-[11px] font-semibold bg-slate-100 text-slate-500 rounded-full">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
       </div>
     </section>
   )
