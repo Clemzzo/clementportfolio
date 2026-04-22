@@ -50,6 +50,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           alt={project.title}
           fill
           sizes="(max-width: 640px) 85vw, 360px"
+          priority={index === 0}
           className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
         />
         <div className="absolute top-3 left-3">
@@ -212,12 +213,27 @@ export default function ProjectsSection() {
 
       <div
         ref={scrollRef}
-        className="flex gap-5 overflow-x-auto snap-x snap-mandatory px-6 md:px-[max(1.5rem,calc((100vw-72rem)/2+1.5rem))] pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        style={{
+          maskImage: `linear-gradient(to right, ${
+            canScrollLeft ? 'transparent 0, rgba(0,0,0,0.3) 40px, #000 140px' : '#000 0'
+          }, ${
+            canScrollRight
+              ? '#000 calc(100% - 140px), rgba(0,0,0,0.3) calc(100% - 60px), transparent 100%'
+              : '#000 100%'
+          })`,
+          WebkitMaskImage: `linear-gradient(to right, ${
+            canScrollLeft ? 'transparent 0, rgba(0,0,0,0.3) 40px, #000 140px' : '#000 0'
+          }, ${
+            canScrollRight
+              ? '#000 calc(100% - 140px), rgba(0,0,0,0.3) calc(100% - 60px), transparent 100%'
+              : '#000 100%'
+          })`,
+        }}
+        className="flex gap-5 overflow-x-auto snap-x snap-mandatory pb-4 px-[max(1.5rem,calc(50%-34.5rem))] scroll-px-[max(1.5rem,calc(50%-34.5rem))] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden transition-[mask-image] duration-300"
       >
         {projects.map((project, index) => (
           <ProjectCard key={project.id} project={project} index={index} />
         ))}
-        <div className="shrink-0 w-4" aria-hidden="true" />
       </div>
     </section>
   )

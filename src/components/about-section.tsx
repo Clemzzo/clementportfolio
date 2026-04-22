@@ -9,7 +9,6 @@ const stats = [
   { value: '3+', label: 'Years Experience' },
   { value: `${projects.length}`, label: 'Projects Shipped' },
   { value: '100%', label: 'Client Satisfaction' },
-  { value: '2', label: 'Platforms' },
 ]
 
 const services = [
@@ -60,7 +59,7 @@ export default function AboutSection() {
               </p>
               <p className="text-slate-500 leading-relaxed">
                 I take full ownership of the product lifecycle from system design, architecture, and API development to the final UI details that users interact with every day. As a full-stack engineer, I bring both technical depth and product sensibility to every project I work on.
-                I am committed to writing clean, maintainable code that is built to scale and delivered with precision. I specialize in taking products from concept to completion within 10 to 12 weeks, with rigorous testing and debugging embedded throughout the process not bolted on at the end.
+                I am committed to writing clean, maintainable code that is built to scale and delivered with precision. I specialize in taking products from concept to completion within 6 to 8 weeks, with rigorous testing and debugging embedded throughout the process not bolted on at the end.
                 Beyond the code, I am passionate about building software that solves real-world problems and creates meaningful impact for the people who use it.
               </p>
             </div>
@@ -78,16 +77,16 @@ export default function AboutSection() {
           </motion.div>
 
           {/* Stats */}
-          <div className="lg:col-span-5 grid grid-cols-2 gap-4">
+          <div className="lg:col-span-5 grid grid-cols-2 gap-4 content-start">
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
                 {...fadeInUp}
                 transition={{ delay: index * 0.07 }}
-                className="bg-blue-600 rounded-2xl p-6 border border-blue-600 flex flex-col justify-center"
+                className="bg-blue-600 rounded-2xl p-5 border border-blue-600"
               >
-                <div className="text-3xl font-bold text-white mb-1">{stat.value}</div>
-                <div className="text-sm text-blue-100">{stat.label}</div>
+                <div className="text-2xl md:text-3xl font-bold text-white mb-0.5">{stat.value}</div>
+                <div className="text-xs md:text-sm text-blue-100">{stat.label}</div>
               </motion.div>
             ))}
           </div>

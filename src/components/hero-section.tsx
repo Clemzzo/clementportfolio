@@ -3,9 +3,44 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
-import { ArrowRight, Mail, Download } from 'lucide-react'
-import { GithubIcon, LinkedInIcon } from '@/components/icons'
-import { contactInfo } from '@/lib/contact'
+import { ArrowRight, Award, Download, Folder, Star, TrendingUp, Zap } from 'lucide-react'
+
+type StatCardProps = {
+  icon: React.ComponentType<{ className?: string }>
+  label: string
+  value: string
+  highlight?: boolean
+}
+
+function StatCard({ icon: Icon, label, value, highlight = false }: StatCardProps) {
+  return (
+    <div
+      className={`relative p-5 md:p-6 rounded-2xl border transition-colors ${highlight
+        ? 'bg-blue-600 border-blue-600 shadow-lg shadow-blue-600/20'
+        : 'bg-white border-slate-200 hover:border-slate-300 hover:shadow-sm'
+        }`}
+    >
+      <div
+        className={`w-9 h-9 rounded-lg flex items-center justify-center mb-8 ${highlight ? 'bg-white/20' : 'bg-blue-50'
+          }`}
+      >
+        <Icon className={`w-[18px] h-[18px] ${highlight ? 'text-white' : 'text-blue-600'}`} />
+      </div>
+      <div
+        className={`text-[11px] font-medium uppercase tracking-wider mb-1.5 ${highlight ? 'text-white/80' : 'text-slate-500'
+          }`}
+      >
+        {label}
+      </div>
+      <div
+        className={`text-2xl md:text-3xl font-bold tracking-tight leading-none ${highlight ? 'text-white' : 'text-slate-900'
+          }`}
+      >
+        {value}
+      </div>
+    </div>
+  )
+}
 
 export default function HeroSection() {
   return (
@@ -13,62 +48,100 @@ export default function HeroSection() {
       <div className="max-w-6xl mx-auto px-6 py-24 w-full">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
-          {/* Left: Text content */}
+          {/* Left: Content */}
           <div className="lg:col-span-7">
-            {/* Available badge */}
+            {/* Avatar */}
             <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4 }}
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-sm font-medium mb-10"
+              className="mb-8"
             >
-              <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-              Available for work
+              <div className="relative w-14 h-14 rounded-full overflow-hidden border border-slate-200 bg-slate-50 shadow-sm">
+                <Image
+                  src="/clement.png"
+                  alt="Clement Kingsley"
+                  fill
+                  priority
+                  sizes="56px"
+                  className="object-cover"
+                />
+              </div>
             </motion.div>
 
-            {/* Name */}
+            {/* Headline */}
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.5 }}
-              className="text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 tracking-tight leading-none mb-6"
+              className="text-5xl md:text-6xl lg:text-4xl font-bold text-slate-900 tracking-tight leading-[1.05] mb-6"
             >
-              Clement
+              Hi, I&apos;m Clement.
               <br />
-              Kingsley
+              Software Developer
             </motion.h1>
 
-            {/* Role */}
+            {/* Description */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              className="text-lg md:text-xl text-slate-500 leading-relaxed mb-10 max-w-xl"
+              className="text-lg md:text-xl text-slate-500 leading-relaxed mb-8 max-w-xl"
             >
-              Full Stack Software Developer specializing in building fast, scalable web and mobile products. I help founders, startups, and businesses turn ideas into polished digital experiences — from concept to deployment.
+              I'm a Full Stack Software Developer specializing in building fast, scalable web and mobile products. I help founders, startups, and businesses turn ideas into polished digital experiences — from concept to deployment.
             </motion.p>
 
-            {/* CTAs */}
+            {/* Trust indicator */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.5 }}
-              className="flex flex-wrap gap-3 mb-12"
+              className="flex items-center gap-5 mb-10"
+            >
+              <div className="flex -space-x-3">
+                {['🇺🇸', '🇬🇧', '🇨🇦', '🇳🇬'].map((flag, i) => (
+                  <span
+                    key={i}
+                    className="w-12 h-12 rounded-full border-2 border-white bg-slate-50 flex items-center justify-center text-2xl shadow-sm"
+                    aria-hidden="true"
+                  >
+                    {flag}
+                  </span>
+                ))}
+              </div>
+              <div className="leading-tight">
+                <div className="text-[13px] font-medium text-slate-700">
+                  Trusted by founders & startups worldwide
+                </div>
+                <div className="flex items-center gap-0.5 mt-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+
+            {/* CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+              className="flex flex-wrap items-center gap-3"
             >
               <Button
                 size="lg"
-                className="bg-blue-600 hover:bg-blue-700 text-white rounded-lg gap-2 h-11"
+                className="bg-blue-600 hover:bg-blue-700 text-white rounded-full gap-2 h-12 px-6"
                 asChild
               >
-                <a href="#projects">
-                  View My Work
+                <a href="#contact">
+                  Let&apos;s talk now
                   <ArrowRight className="h-4 w-4" />
                 </a>
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="rounded-lg gap-2 h-11 border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-slate-300"
+                className="rounded-full gap-2 h-12 px-6 border-slate-300 text-slate-700 hover:bg-slate-50 hover:border-slate-400"
                 asChild
               >
                 <a href="/Clement_Kingsley_Resume.pdf" download>
@@ -77,63 +150,20 @@ export default function HeroSection() {
                 </a>
               </Button>
             </motion.div>
-
-            {/* Socials */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.45 }}
-              className="flex gap-2"
-            >
-              <a
-                href="https://github.com/clemzzo"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub"
-                className="p-2.5 rounded-lg border border-slate-200 text-slate-400 hover:text-slate-900 hover:border-slate-300 hover:bg-slate-50 transition-colors"
-              >
-                <GithubIcon />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/clement-kingsley-ba8a90202"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-                className="p-2.5 rounded-lg border border-slate-200 text-slate-400 hover:text-slate-900 hover:border-slate-300 hover:bg-slate-50 transition-colors"
-              >
-                <LinkedInIcon />
-              </a>
-              <a
-                href={`mailto:${contactInfo.email}`}
-                aria-label="Email"
-                className="p-2.5 rounded-lg border border-slate-200 text-slate-400 hover:text-slate-900 hover:border-slate-300 hover:bg-slate-50 transition-colors"
-              >
-                <Mail className="h-5 w-5" />
-              </a>
-            </motion.div>
           </div>
 
-          {/* Right: Profile image */}
+          {/* Right: Stats grid */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="lg:col-span-5 flex justify-center lg:justify-end"
+            className="lg:col-span-5"
           >
-            <div className="relative w-full max-w-sm aspect-square">
-              {/* Soft blue accent */}
-              <div className="absolute -inset-4 bg-blue-100 rounded-full blur-3xl opacity-60" />
-              {/* Image container */}
-              <div className="relative w-full h-full rounded-full overflow-hidden border border-slate-200 bg-slate-50 shadow-sm">
-                <Image
-                  src="/clement.png"
-                  alt="Clement Kingsley"
-                  fill
-                  priority
-                  sizes="(max-width: 1024px) 384px, 420px"
-                  className="object-cover"
-                />
-              </div>
+            <div className="grid grid-cols-2 gap-3 md:gap-4">
+              <StatCard icon={TrendingUp} label="Success Rate" value="95%" />
+              <StatCard icon={Folder} label="Total Projects" value="10+" />
+              <StatCard icon={Zap} label="Avg. Delivery Time" value="7 weeks" />
+              <StatCard icon={Award} label="Experience" value="3 yrs 8 mo" highlight />
             </div>
           </motion.div>
         </div>
