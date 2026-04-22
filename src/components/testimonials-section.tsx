@@ -259,7 +259,7 @@ export default function TestimonialsSection() {
             <div>
               <Rating value={Math.round(parseFloat(avgRating))} />
               <div className="mt-2 max-w-[160px] text-[12px] leading-[1.5] text-[color:var(--t-ink-3)]">
-                Average across {testimonials.length} reviews from engineering and product leads.
+                Average across {testimonials.length} reviews from founders and startup leads.
               </div>
             </div>
           </div>
@@ -270,20 +270,16 @@ export default function TestimonialsSection() {
         <div
           ref={trackRef}
           style={{
-            maskImage: `linear-gradient(to right, ${
-              canPrev ? 'transparent 0, rgba(0,0,0,0.3) 40px, #000 140px' : '#000 0'
-            }, ${
-              canNext
+            maskImage: `linear-gradient(to right, ${canPrev ? 'transparent 0, rgba(0,0,0,0.3) 40px, #000 140px' : '#000 0'
+              }, ${canNext
                 ? '#000 calc(100% - 140px), rgba(0,0,0,0.3) calc(100% - 60px), transparent 100%'
                 : '#000 100%'
-            })`,
-            WebkitMaskImage: `linear-gradient(to right, ${
-              canPrev ? 'transparent 0, rgba(0,0,0,0.3) 40px, #000 140px' : '#000 0'
-            }, ${
-              canNext
+              })`,
+            WebkitMaskImage: `linear-gradient(to right, ${canPrev ? 'transparent 0, rgba(0,0,0,0.3) 40px, #000 140px' : '#000 0'
+              }, ${canNext
                 ? '#000 calc(100% - 140px), rgba(0,0,0,0.3) calc(100% - 60px), transparent 100%'
                 : '#000 100%'
-            })`,
+              })`,
           }}
           className="flex gap-5 overflow-x-auto overflow-y-visible snap-x snap-mandatory pt-2 pb-7 px-[max(1.5rem,calc(50%-34.5rem))] scroll-px-[max(1.5rem,calc(50%-34.5rem))] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden transition-[mask-image] duration-300"
         >
