@@ -78,7 +78,7 @@ export default function HeroSection() {
             >
               Hi, I&apos;m Clement.
               <br />
-              Software Developer
+             I Build Digital Products That Turn Ideas Into Real Businesses.
             </motion.h1>
 
             {/* Description */}
@@ -88,7 +88,9 @@ export default function HeroSection() {
               transition={{ delay: 0.2, duration: 0.5 }}
               className="text-lg md:text-xl text-slate-500 leading-relaxed mb-8 max-w-xl"
             >
-              I'm a Full Stack Software Developer specializing in building fast, scalable web and mobile products. I help founders, startups, and businesses turn ideas into polished digital experiences — from concept to deployment.
+              I’m a Senior Full-Stack Developer helping founders, startups, and businesses build scalable web & mobile apps, SaaS, 
+              AI-powered products, and custom business systems—from MVP to production. 
+              I focus on clean architecture, great UX, performance, and building products ready for real users and growth.
             </motion.p>
 
             {/* Trust indicator */}
@@ -134,7 +136,7 @@ export default function HeroSection() {
                 asChild
               >
                 <a href="#contact">
-                  Let&apos;s talk now
+                  Let&apos;s build your product
                   <ArrowRight className="h-4 w-4" />
                 </a>
               </Button>

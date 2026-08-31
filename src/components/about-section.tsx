@@ -28,7 +28,7 @@ const services = [
     icon: Server,
     title: 'Backend & APIs',
     description: 'Scalable server-side systems and REST APIs. Integrated with modern databases and cloud infrastructure.',
-    tags: ['Node.js', 'Express', 'REST APIs', 'Supabase', 'PostgreSQL', 'Firebase', 'MongoDB'],
+    tags: ['Node.js', 'Express', 'REST APIs', 'GraphQL', 'Webhooks', 'Prisma', 'Drizzle', 'Supabase', 'Neon', 'Convex', 'PostgreSQL', 'Firebase', 'Redis', 'Auth & JWT', 'Stripe', 'Docker'],
   },
 ]
 
@@ -41,7 +41,7 @@ export default function AboutSection() {
         <motion.div {...fadeInUp} className="mb-14">
           <span className="text-blue-600 text-sm font-semibold uppercase tracking-wider">About</span>
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mt-2 tracking-tight">
-            Story Behind The Code
+            The Developer Behind The Product
           </h2>
         </motion.div>
 
@@ -55,17 +55,21 @@ export default function AboutSection() {
           >
             <div>
               <p className="text-lg text-slate-700 leading-relaxed mb-4">
-                I&apos;m a <span className="font-semibold text-slate-900">Full Stack Software Developer</span> with 3+ years of experience building web and mobile products for founders, startups, and growing businesses.
+                I&apos;m a <span className="font-semibold text-slate-900">Senior Full Stack Software Developer</span> with 3+ years of experience building web and mobile products for founders, startups, and growing businesses.
               </p>
-              <p className="text-slate-500 leading-relaxed">
-                I take full ownership of the product lifecycle from system design, architecture, and API development to the final UI details that users interact with every day. As a full-stack engineer, I bring both technical depth and product sensibility to every project I work on.
-                I am committed to writing clean, maintainable code that is built to scale and delivered with precision. I specialize in taking products from concept to completion within 6 to 8 weeks, with rigorous testing and debugging embedded throughout the process not bolted on at the end.
-                Beyond the code, I am passionate about building software that solves real-world problems and creates meaningful impact for the people who use it.
+              <p className="text-slate-700 leading-relaxed mb-4">
+                I take ownership of the entire product journey—from system architecture, backend and API development to responsive interfaces, integrations, testing, and deployment. My goal is simple: build software that is not only functional, but fast, scalable, maintainable, and ready for real users.
+              </p>
+              <p className="text-slate-700 leading-relaxed mb-4">
+                I work closely with clients to understand their goals, turn ideas into practical solutions, and ship products with the right balance of technical quality, great user experience, and business value.
+              </p>
+               <p className="text-slate-700 leading-relaxed">
+                Whether you're starting with an idea, building an MVP, or improving an existing product, I can help take it from concept to production.
               </p>
             </div>
 
             <div className="flex flex-wrap gap-2 mt-8 pt-6 border-t border-slate-100">
-              {['Problem Solver', 'Clean Code', 'Ship Fast', 'Scalable Products'].map((tag) => (
+              {['Problem Solver', 'Clean Code', 'Product Mindset', 'Scalable Systems'].map((tag) => (
                 <span
                   key={tag}
                   className="px-3 py-1.5 rounded-full bg-slate-100 text-slate-600 text-xs font-semibold uppercase tracking-wider"

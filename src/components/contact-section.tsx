@@ -76,7 +76,7 @@ export default function ContactSection() {
                   className={`group flex items-center gap-4 p-5 hover:bg-slate-50/80 transition-colors ${i !== contactItems.length - 1 ? 'border-b border-slate-100' : ''
                     }`}
                 >
-                  <div className="shrink-0 p-2.5 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100/50 border border-blue-100">
+                  <div className="shrink-0 p-2.5 rounded-xl bg-linear-to-br from-blue-50 to-blue-100/50 border border-blue-100">
                     <item.icon className="w-4 h-4 text-blue-600" strokeWidth={2.25} />
                   </div>
                   <div className="flex-1 min-w-0">
