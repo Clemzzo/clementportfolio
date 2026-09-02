@@ -97,6 +97,8 @@ const skillCategories = [
     skills: [
       { name: 'PostgreSQL', color: '#4169E1' },
       { name: 'Supabase', color: '#3ECF8E' },
+      { name: 'Neon', color: '#00E599' },
+      { name: 'Convex', color: '#EE342F' },
       { name: 'FirebaseDB', color: '#FFCA28' },
       { name: 'MongoDB', color: '#47A248' },
       { name: 'Cloudflare', color: '#F38020' },
@@ -129,10 +131,10 @@ export default function SkillsSection() {
               key={category.title}
               {...fadeInUp}
               transition={{ delay: index * 0.08 }}
-              className="group relative bg-white rounded-2xl p-7 border border-slate-200/80 hover:border-slate-300 hover:shadow-xl hover:shadow-slate-900/[0.04] transition-all duration-300"
+              className="group relative bg-white rounded-2xl p-7 border border-slate-200/80 hover:border-slate-300 hover:shadow-xl hover:shadow-slate-9 transition-all duration-300"
             >
               <div className="flex items-start gap-4 mb-6">
-                <div className="shrink-0 p-2.5 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100/50 border border-blue-100">
+                <div className="shrink-0 p-2.5 rounded-xl bg-linear-to-br from-blue-50 to-blue-100/50 border border-blue-100">
                   <category.icon className="w-5 h-5 text-blue-600" strokeWidth={2.25} />
                 </div>
                 <div className="flex-1 min-w-0">
@@ -165,10 +167,10 @@ export default function SkillsSection() {
 
         <motion.div
           {...fadeInUp}
-          className="mt-5 bg-white rounded-2xl p-7 border border-slate-200/80 hover:border-slate-300 hover:shadow-xl hover:shadow-slate-900/[0.04] transition-all duration-300"
+          className="mt-5 bg-white rounded-2xl p-7 border border-slate-200/80 hover:border-slate-300 hover:shadow-xl hover:shadow-slate-9 transition-all duration-300"
         >
           <div className="flex items-start gap-4 mb-6">
-            <div className="shrink-0 p-2.5 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100/50 border border-blue-100">
+            <div className="shrink-0 p-2.5 rounded-xl bg-linear-to-br from-blue-50 to-blue-100/50 border border-blue-100">
               <Wrench className="w-5 h-5 text-blue-600" strokeWidth={2.25} />
             </div>
             <div className="flex-1 min-w-0">

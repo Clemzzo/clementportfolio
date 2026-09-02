@@ -14,21 +14,21 @@ const stats = [
 const services = [
   {
     icon: Monitor,
-    title: 'Web Development',
-    description: 'Pixel-perfect, performant web apps built with React and Next.js. From landing pages to complex dashboards and Admin dashboards.',
-    tags: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'PostgreSQL', 'Cloudflare'],
+    title: 'Web App Development',
+    description: 'High-performance, scalable web applications designed around your business goals—from landing pages and MVPs to complex dashboards and full-scale platforms.',
+    tags: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'PostgreSQL', 'REST APIs'],
   },
   {
     icon: Smartphone,
     title: 'Mobile Apps',
-    description: 'Cross-platform mobile applications that feel native. Built with React Native and Expo for iOS and Android.',
-    tags: ['React Native', 'Expo', 'NativeWind'],
+    description: 'Modern, cross-platform mobile applications built for iOS and Android with smooth experiences, reusable components, and scalable architecture.',
+    tags: ['React Native', 'Expo', 'TypeScript', 'NativeWind', 'REST APIs'],
   },
   {
     icon: Server,
     title: 'Backend & APIs',
-    description: 'Scalable server-side systems and REST APIs. Integrated with modern databases and cloud infrastructure.',
-    tags: ['Node.js', 'Express', 'REST APIs', 'GraphQL', 'Webhooks', 'Prisma', 'Drizzle', 'Supabase', 'Neon', 'Convex', 'PostgreSQL', 'Firebase', 'Redis', 'Auth & JWT', 'Stripe', 'Docker'],
+    description: 'Secure and scalable backend systems that power reliable applications, APIs, authentication, data management, integrations, and business logic.',
+    tags: ['Node.js', 'Express', 'REST APIs', 'Webhooks', 'Drizzle', 'Supabase', 'Neon', 'Convex', 'PostgreSQL', 'Redis', 'Docker'],
   },
 ]
 

@@ -198,6 +198,66 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    id: 4,
+    slug: 'power-prompts-lab',
+    title: 'Power Prompts Lab',
+    category: 'Web App',
+    description:
+      'A mobile-first subscription learning platform that teaches everyday practical AI skills to adults aged 55+, an audience most learning products quietly ignore.',
+    overview:
+      'Power Prompts Lab is a mobile-first subscription learning platform built for adults aged 55+. Learners take a short onboarding quiz, buy a plan, and work through bite-sized ChatGPT lessons — with new modules added weekly — built around a read, practice, and quiz loop that keeps progress visible and momentum easy to maintain.',
+    image: '/ppl.png',
+    technologies: [
+      'Next.js 16',
+      'React 19',
+      'TypeScript',
+      'Tailwind CSS',
+      'Clerk',
+      'Neon',
+      'Postgres',
+      'Drizzle ORM',
+      'Stripe',
+      'Resend',
+      'PostHog',
+      'Upstash Redis',
+      'Zod',
+      'Vercel',
+    ],
+    liveUrl: 'https://powerpromptslab.com/',
+    features: [
+      {
+        title: 'Onboarding quiz',
+        description:
+          'Eleven warm, one-per-screen questions that personalise the user\'s experience before sign-up.',
+      },
+      {
+        title: 'Read → practice → quiz lessons',
+        description:
+          'A three-step loop per lesson with copy-ready prompts, quizzes, and saved progress.',
+      },
+      {
+        title: 'Lifecycle email automation',
+        description:
+          'Cron-driven reminders with double-send protection and signed one-click unsubscribe.',
+      },
+      {
+        title: 'Admin dashboard',
+        description:
+          'Revenue, subscribers, users, and feedback with charts, filtering, and CSV export.',
+      },
+      {
+        title: 'Analytics funnel',
+        description:
+          'PostHog events tracking the full path from first visit to activated subscription.',
+      },
+      {
+        title: 'Stripe paywall & entitlements',
+        description:
+          'Monthly and yearly subscriptions with entitlement checks gating every lesson.',
+      },
+    ],
+  },
 ]
 
 export function getProject(slug: string): Project | undefined {

@@ -44,7 +44,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         className="absolute inset-0 z-0"
       />
 
-      <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
+      <div className="relative aspect-16/10 overflow-hidden bg-slate-100">
         <Image
           src={project.image}
           alt={project.title}
@@ -170,10 +170,10 @@ export default function ProjectsSection() {
           <div>
             <span className="text-blue-600 text-sm font-semibold uppercase tracking-wider">Work</span>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mt-2 tracking-tight">
-              Selected Projects
+              Featured Projects
             </h2>
             <p className="text-slate-500 mt-4 max-w-lg">
-              A handpicked lineup of products I&apos;ve designed, built, and shipped, where pixel-perfect design meets production-ready code.
+             A selection of products, applications, and systems I’ve designed, built, and shipped—focused on solving real problems with clean, scalable, production-ready code.
             </p>
           </div>
 
