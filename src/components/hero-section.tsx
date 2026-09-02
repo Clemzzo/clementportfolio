@@ -164,7 +164,7 @@ export default function HeroSection() {
             <div className="grid grid-cols-2 gap-3 md:gap-4">
               <StatCard icon={TrendingUp} label="Success Rate" value="95%" />
               <StatCard icon={Folder} label="Total Projects" value="10+" />
-              <StatCard icon={Zap} label="Avg. Delivery Time" value="7 weeks" />
+              <StatCard icon={Zap} label="Avg. Delivery Time" value="10 weeks" />
               <StatCard icon={Award} label="Experience" value="3 yrs 8 mo" highlight />
             </div>
           </motion.div>
