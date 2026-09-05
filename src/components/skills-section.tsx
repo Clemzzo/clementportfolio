@@ -111,15 +111,15 @@ const tools = ['Figma', 'Git', 'GitHub', 'Postman', 'VS Code', 'NPM']
 
 export default function SkillsSection() {
   return (
-    <section id="skills" className="py-24 bg-white">
+    <section id="skills" className="py-24 bg-ink-0">
       <div className="max-w-6xl mx-auto px-6">
 
         <motion.div {...fadeInUp} className="mb-16 max-w-2xl">
-          <span className="text-blue-600 text-sm font-semibold uppercase tracking-wider">Stack</span>
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mt-2 tracking-tight">
+          <span className="text-blue-400 text-sm font-semibold uppercase tracking-wider">Stack</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-ink-950 mt-2 tracking-tight">
             Tech Arsenal
           </h2>
-          <p className="text-slate-500 mt-4 text-[15px] leading-relaxed">
+          <p className="text-ink-600 mt-4 text-[15px] leading-relaxed">
             The modern toolkit I reach for to design, build, and ship
             scalable, high-performance products end-to-end.
           </p>
@@ -131,20 +131,20 @@ export default function SkillsSection() {
               key={category.title}
               {...fadeInUp}
               transition={{ delay: index * 0.08 }}
-              className="group relative bg-white rounded-2xl p-7 border border-slate-200/80 hover:border-slate-300 hover:shadow-xl hover:shadow-slate-9 transition-all duration-300"
+              className="group relative bg-ink-100 rounded-2xl p-7 border border-ink-400/80 hover:border-blue-500/60 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300"
             >
               <div className="flex items-start gap-4 mb-6">
-                <div className="shrink-0 p-2.5 rounded-xl bg-linear-to-br from-blue-50 to-blue-100/50 border border-blue-100">
-                  <category.icon className="w-5 h-5 text-blue-600" strokeWidth={2.25} />
+                <div className="shrink-0 p-2.5 rounded-xl bg-linear-to-br from-blue-500/10 to-blue-500/10 border border-blue-500/20">
+                  <category.icon className="w-5 h-5 text-blue-400" strokeWidth={2.25} />
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2">
-                    <h3 className="text-base font-bold text-slate-900">{category.title}</h3>
-                    <span className="text-[11px] font-medium text-slate-400 tabular-nums">
+                    <h3 className="text-base font-bold text-ink-950">{category.title}</h3>
+                    <span className="text-[11px] font-medium text-ink-600 tabular-nums">
                       {category.skills.length}
                     </span>
                   </div>
-                  <p className="text-[13px] text-slate-500 mt-0.5 leading-snug">
+                  <p className="text-[13px] text-ink-600 mt-0.5 leading-snug">
                     {category.description}
                   </p>
                 </div>
@@ -154,7 +154,7 @@ export default function SkillsSection() {
                 {category.skills.map((skill) => (
                   <div
                     key={skill.name}
-                    className="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-50 border border-slate-100 rounded-full text-[13px] font-medium text-slate-700 hover:bg-white hover:border-slate-300 hover:shadow-sm transition-all"
+                    className="inline-flex items-center gap-2 px-3 py-1.5 bg-ink-200 border border-ink-400/60 rounded-full text-[13px] font-medium text-ink-800 hover:bg-blue-500/10 hover:border-blue-500/60 hover:text-blue-300 hover:shadow-sm hover:shadow-blue-500/10 transition-all"
                   >
                     <TechIcon name={skill.name} color={skill.color} />
                     <span>{skill.name}</span>
@@ -167,20 +167,20 @@ export default function SkillsSection() {
 
         <motion.div
           {...fadeInUp}
-          className="mt-5 bg-white rounded-2xl p-7 border border-slate-200/80 hover:border-slate-300 hover:shadow-xl hover:shadow-slate-9 transition-all duration-300"
+          className="mt-5 bg-ink-100 rounded-2xl p-7 border border-ink-400/80 hover:border-blue-500/60 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300"
         >
           <div className="flex items-start gap-4 mb-6">
-            <div className="shrink-0 p-2.5 rounded-xl bg-linear-to-br from-blue-50 to-blue-100/50 border border-blue-100">
-              <Wrench className="w-5 h-5 text-blue-600" strokeWidth={2.25} />
+            <div className="shrink-0 p-2.5 rounded-xl bg-linear-to-br from-blue-500/10 to-blue-500/10 border border-blue-500/20">
+              <Wrench className="w-5 h-5 text-blue-400" strokeWidth={2.25} />
             </div>
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2">
-                <h3 className="text-base font-bold text-slate-900">Daily Tools</h3>
-                <span className="text-[11px] font-medium text-slate-400 tabular-nums">
+                <h3 className="text-base font-bold text-ink-950">Daily Tools</h3>
+                <span className="text-[11px] font-medium text-ink-600 tabular-nums">
                   {tools.length}
                 </span>
               </div>
-              <p className="text-[13px] text-slate-500 mt-0.5 leading-snug">
+              <p className="text-[13px] text-ink-600 mt-0.5 leading-snug">
                 The everyday workbench — design, version control, and developer experience.
               </p>
             </div>
@@ -190,7 +190,7 @@ export default function SkillsSection() {
             {tools.map((tool) => (
               <div
                 key={tool}
-                className="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-50 border border-slate-100 rounded-full text-[13px] font-medium text-slate-700 hover:bg-white hover:border-slate-300 hover:shadow-sm transition-all"
+                className="inline-flex items-center gap-2 px-3 py-1.5 bg-ink-200 border border-ink-400/60 rounded-full text-[13px] font-medium text-ink-800 hover:bg-blue-500/10 hover:border-blue-500/60 hover:text-blue-300 hover:shadow-sm hover:shadow-blue-500/10 transition-all"
               >
                 <TechIcon name={tool} color="#64748b" />
                 <span>{tool}</span>

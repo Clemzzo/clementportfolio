@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Inter, Instrument_Serif, Poppins } from "next/font/google"
 import "./globals.css"
+import PreloaderProvider from "@/components/preloader-provider"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -35,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" data-scroll-behavior="smooth">
       <body suppressHydrationWarning className={`${inter.variable} ${instrumentSerif.variable} ${poppins.variable} font-sans antialiased bg-background text-foreground`}>
-        {children}
+        <PreloaderProvider>{children}</PreloaderProvider>
       </body>
     </html>
   )

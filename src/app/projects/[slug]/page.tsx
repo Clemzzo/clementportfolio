@@ -35,7 +35,7 @@ export default async function ProjectDetailPage({
   if (!project) notFound()
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-ink-0">
       <Navigation />
 
       <article className="pt-28 pb-24">
@@ -43,20 +43,20 @@ export default async function ProjectDetailPage({
 
           <Link
             href="/projects"
-            className="group inline-flex items-center gap-1.5 text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors mb-10"
+            className="group inline-flex items-center gap-1.5 text-sm font-medium text-ink-600 hover:text-blue-400 transition-colors mb-10"
           >
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" />
             Back to projects
           </Link>
 
           <header className="mb-10">
-            <span className="inline-flex items-center text-blue-600 text-sm font-semibold uppercase tracking-wider">
+            <span className="inline-flex items-center text-blue-400 text-sm font-semibold uppercase tracking-wider">
               {project.category}
             </span>
-            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mt-3 tracking-tight">
+            <h1 className="text-4xl md:text-5xl font-bold text-ink-950 mt-3 tracking-tight">
               {project.title}
             </h1>
-            <p className="text-slate-500 text-lg leading-relaxed mt-5 max-w-2xl">
+            <p className="text-ink-600 text-lg leading-relaxed mt-5 max-w-2xl">
               {project.description}
             </p>
 
@@ -73,7 +73,7 @@ export default async function ProjectDetailPage({
             </div>
           </header>
 
-          <div className="relative aspect-[16/9] rounded-2xl overflow-hidden border border-slate-200 bg-slate-100 mb-14">
+          <div className="relative aspect-[16/9] rounded-2xl overflow-hidden border border-ink-400 bg-ink-200 mb-14">
             <Image
               src={project.image}
               alt={project.title}
@@ -85,32 +85,32 @@ export default async function ProjectDetailPage({
           </div>
 
           <section className="mb-14">
-            <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-4">
+            <h2 className="text-xs font-semibold uppercase tracking-wider text-ink-600 mb-4">
               Overview
             </h2>
-            <p className="text-slate-700 text-[17px] leading-[1.75]">
+            <p className="text-ink-800 text-[17px] leading-[1.75]">
               {project.overview}
             </p>
           </section>
 
           <section className="mb-14">
-            <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-6">
+            <h2 className="text-xs font-semibold uppercase tracking-wider text-ink-600 mb-6">
               Key Features
             </h2>
             <div className="grid md:grid-cols-2 gap-4">
               {project.features.map((feature) => (
                 <div
                   key={feature.title}
-                  className="flex gap-4 p-5 bg-slate-50/80 rounded-2xl border border-slate-200/80"
+                  className="flex gap-4 p-5 bg-ink-100/80 rounded-2xl border border-ink-400/80"
                 >
-                  <div className="shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-blue-50 to-blue-100/50 border border-blue-100 flex items-center justify-center">
-                    <Check className="w-4 h-4 text-blue-600" strokeWidth={2.5} />
+                  <div className="shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500/10 to-blue-500/10 border border-blue-500/20 flex items-center justify-center">
+                    <Check className="w-4 h-4 text-blue-400" strokeWidth={2.5} />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="text-sm font-semibold text-slate-900 mb-1">
+                    <h3 className="text-sm font-semibold text-ink-950 mb-1">
                       {feature.title}
                     </h3>
-                    <p className="text-[13px] text-slate-500 leading-relaxed">
+                    <p className="text-[13px] text-ink-600 leading-relaxed">
                       {feature.description}
                     </p>
                   </div>
@@ -120,14 +120,14 @@ export default async function ProjectDetailPage({
           </section>
 
           <section>
-            <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-4">
+            <h2 className="text-xs font-semibold uppercase tracking-wider text-ink-600 mb-4">
               Tech Stack
             </h2>
             <div className="flex flex-wrap gap-2">
               {project.technologies.map((tech) => (
                 <span
                   key={tech}
-                  className="px-3 py-1.5 text-[13px] font-medium bg-slate-50 border border-slate-200 text-slate-700 rounded-full"
+                  className="px-3 py-1.5 text-[13px] font-medium bg-ink-100 border border-ink-400 text-ink-800 rounded-full"
                 >
                   {tech}
                 </span>

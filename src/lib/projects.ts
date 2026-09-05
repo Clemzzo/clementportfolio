@@ -8,6 +8,7 @@ export type Project = {
   slug: string
   title: string
   category: string
+  year: string
   description: string
   overview: string
   image: string
@@ -23,6 +24,7 @@ export const projects: Project[] = [
     slug: 'foody-express',
     title: 'Foody Express',
     category: 'Mobile App',
+    year: '2025',
     description:
       'Premium food delivery solution with real-time tracking, restaurant analytics, and seamless payment integration.',
     overview:
@@ -64,6 +66,7 @@ export const projects: Project[] = [
     slug: 'expense-ai',
     title: 'ExpenseAI',
     category: 'Web App',
+    year: '2025',
     description:
       'ExpenseAI is an AI powered Expense tracking App that helps you control your spending, manage your expenses, Create Budgets and gives you best suggestions on how to minimise expenses.',
     overview:
@@ -119,6 +122,7 @@ export const projects: Project[] = [
     slug: 'perpetual-wealth',
     title: 'Perpetual Wealth',
     category: 'Web App',
+    year: '2026',
     description:
       'Full stack AI-driven financial intelligence platform for high-income earners that centralizes financial information, reduces complexity, and delivers actionable wealth strategies.',
     overview:
@@ -203,6 +207,7 @@ export const projects: Project[] = [
     slug: 'power-prompts-lab',
     title: 'Power Prompts Lab',
     category: 'Web App',
+    year: '2026',
     description:
       'A mobile-first subscription learning platform that teaches everyday practical AI skills to adults aged 55+, an audience most learning products quietly ignore.',
     overview:

@@ -1,14 +1,15 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Monitor, Smartphone, Server } from 'lucide-react'
+import { Monitor, Smartphone, Server, Palette } from 'lucide-react'
 import { fadeInUp } from '@/lib/motion'
 import { projects } from '@/lib/projects'
 
-const stats = [
-  { value: '3+', label: 'Years Experience' },
-  { value: `${projects.length}`, label: 'Projects Shipped' },
-  { value: '100%', label: 'Client Satisfaction' },
+const facts = [
+  { k: 'Experience', v: '3+ years' },
+  { k: 'Projects shipped', v: `${projects.length}` },
+  { k: 'Client satisfaction', v: '100%' },
+  { k: 'Avg. delivery', v: '10 weeks' },
 ]
 
 const services = [
@@ -30,49 +31,71 @@ const services = [
     description: 'Secure and scalable backend systems that power reliable applications, APIs, authentication, data management, integrations, and business logic.',
     tags: ['Node.js', 'Express', 'REST APIs', 'Webhooks', 'Drizzle', 'Supabase', 'Neon', 'Convex', 'PostgreSQL', 'Redis', 'Docker'],
   },
+  {
+    icon: Palette,
+    title: 'Branding & Identity',
+    description: 'Cohesive brand systems that make a product feel considered—logo, typography, colour, and the interface components that carry that identity across every screen.',
+    tags: ['Figma', 'Design Systems', 'Brand Guidelines', 'UI Kits'],
+  },
 ]
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-24 bg-slate-50">
+    <section id="about" className="py-24 bg-ink-50">
       <div className="max-w-6xl mx-auto px-6">
 
         {/* Header */}
-        <motion.div {...fadeInUp} className="mb-14">
-          <span className="text-blue-600 text-sm font-semibold uppercase tracking-wider">About</span>
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mt-2 tracking-tight">
-            The Developer Behind The Product
+        <motion.div {...fadeInUp} className="mb-12 md:mb-16">
+          <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-blue-400">
+            About
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold text-ink-950 mt-3 tracking-tight max-w-3xl text-balance">
+            The developer behind
+            <span className="font-instrument italic font-normal text-blue-400"> the product.</span>
           </h2>
         </motion.div>
 
-        {/* Bio + Stats */}
-        <div className="grid lg:grid-cols-12 gap-6 mb-6">
+        <div className="grid grid-cols-12 gap-x-6 gap-y-12">
 
-          {/* Bio */}
-          <motion.div
-            {...fadeInUp}
-            className="lg:col-span-7 bg-white rounded-2xl p-8 border border-slate-200 flex flex-col justify-between"
-          >
-            <div>
-              <p className="text-lg text-slate-700 leading-relaxed mb-4">
-                I&apos;m a <span className="font-semibold text-slate-900">Senior Full Stack Software Developer</span> with 3+ years of experience building web and mobile products for founders, startups, and growing businesses.
+          {/* Bio + fact sheet */}
+          <motion.div {...fadeInUp} className="col-span-12 lg:col-span-7">
+            <div className="space-y-5 text-ink-800 text-[15px] sm:text-base md:text-lg leading-[1.65] text-balance">
+              <p>
+                I&apos;m a <span className="text-ink-950 font-medium">Senior Full Stack Software Developer</span> with 3+ years of experience building web and mobile products for founders, startups, and growing businesses.
               </p>
-              <p className="text-slate-700 leading-relaxed mb-4">
+              <p>
                 I take ownership of the entire product journey—from system architecture, backend and API development to responsive interfaces, integrations, testing, and deployment. My goal is simple: build software that is not only functional, but fast, scalable, maintainable, and ready for real users.
               </p>
-              <p className="text-slate-700 leading-relaxed mb-4">
+              <p>
                 I work closely with clients to understand their goals, turn ideas into practical solutions, and ship products with the right balance of technical quality, great user experience, and business value.
               </p>
-               <p className="text-slate-700 leading-relaxed">
-                Whether you're starting with an idea, building an MVP, or improving an existing product, I can help take it from concept to production.
+              <p>
+                Whether you&apos;re starting with an idea, building an MVP, or improving an existing product, I can help take it from concept to production.
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-2 mt-8 pt-6 border-t border-slate-100">
+            {/* gap-px over a tinted parent renders the 1px rules between cells */}
+            <dl className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-ink-400/50 bg-ink-400/30">
+              {facts.map((fact, index) => (
+                <motion.div
+                  key={fact.k}
+                  {...fadeInUp}
+                  transition={{ delay: index * 0.05 }}
+                  className="bg-ink-0 px-5 py-4"
+                >
+                  <dt className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-600">
+                    {fact.k}
+                  </dt>
+                  <dd className="mt-1 text-[15px] font-medium text-ink-950">{fact.v}</dd>
+                </motion.div>
+              ))}
+            </dl>
+
+            <div className="flex flex-wrap gap-2 mt-8">
               {['Problem Solver', 'Clean Code', 'Product Mindset', 'Scalable Systems'].map((tag) => (
                 <span
                   key={tag}
-                  className="px-3 py-1.5 rounded-full bg-slate-100 text-slate-600 text-xs font-semibold uppercase tracking-wider"
+                  className="px-3 py-1.5 rounded-full bg-ink-200 text-ink-700 text-xs font-semibold uppercase tracking-wider"
                 >
                   {tag}
                 </span>
@@ -80,47 +103,55 @@ export default function AboutSection() {
             </div>
           </motion.div>
 
-          {/* Stats */}
-          <div className="lg:col-span-5 grid grid-cols-2 gap-4 content-start">
-            {stats.map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                {...fadeInUp}
-                transition={{ delay: index * 0.07 }}
-                className="bg-blue-600 rounded-2xl p-5 border border-blue-600"
-              >
-                <div className="text-2xl md:text-3xl font-bold text-white mb-0.5">{stat.value}</div>
-                <div className="text-xs md:text-sm text-blue-100">{stat.label}</div>
-              </motion.div>
-            ))}
+          {/* What I do */}
+          <div className="col-span-12 lg:col-span-5 lg:pl-6">
+            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink-600">
+              What I do
+            </p>
+
+            <div className="mt-5 space-y-3">
+              {services.map((service, index) => (
+                <motion.div
+                  key={service.title}
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.07, ease: [0.22, 1, 0.36, 1] }}
+                  className="group rounded-2xl border border-ink-400 bg-ink-100 p-5 hover:border-blue-500/60 hover:shadow-lg hover:shadow-blue-500/10 transition-all duration-200"
+                >
+                  <div className="flex items-start gap-4">
+                    <span className="mt-1 font-mono text-[11px] text-blue-400 shrink-0">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-2">
+                        <service.icon className="w-4 h-4 text-blue-400 shrink-0" />
+                        <h3 className="text-lg font-semibold text-ink-950">{service.title}</h3>
+                      </div>
+
+                      <p className="mt-1.5 text-sm text-ink-700 leading-relaxed">
+                        {service.description}
+                      </p>
+
+                      <div className="flex flex-wrap gap-1.5 mt-3">
+                        {service.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="px-2 py-0.5 text-[10px] font-medium bg-ink-200 text-ink-600 rounded-full border border-transparent group-hover:border-blue-500/30 group-hover:text-blue-300 transition-colors"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
-        </div>
 
-        {/* Services */}
-        <div className="grid md:grid-cols-3 gap-5">
-          {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              {...fadeInUp}
-              transition={{ delay: index * 0.08 }}
-              className="bg-white rounded-2xl p-7 border border-slate-200 hover:border-blue-200 hover:shadow-sm transition-all duration-200 group"
-            >
-              <div className="p-2.5 rounded-xl bg-blue-50 w-fit mb-5 group-hover:bg-blue-100 transition-colors">
-                <service.icon className="w-5 h-5 text-blue-600" />
-              </div>
-              <h3 className="text-base font-bold text-slate-900 mb-2">{service.title}</h3>
-              <p className="text-sm text-slate-500 leading-relaxed mb-5">{service.description}</p>
-              <div className="flex flex-wrap gap-1.5">
-                {service.tags.map((tag) => (
-                  <span key={tag} className="px-2.5 py-1 text-[11px] font-semibold bg-slate-100 text-slate-500 rounded-full">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
         </div>
-
       </div>
     </section>
   )

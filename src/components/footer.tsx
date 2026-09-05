@@ -27,14 +27,14 @@ export default function Footer() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 
   return (
-    <footer className="bg-slate-900 border-t border-slate-800">
+    <footer className="bg-ink-0 border-t border-ink-500">
       <div className="max-w-6xl mx-auto px-6 py-14">
         <div className="grid md:grid-cols-3 gap-10">
 
           {/* Brand */}
           <motion.div {...fadeInUp} className="space-y-4">
-            <span className="text-lg font-bold text-white">Clement Kingsley</span>
-            <p className="text-slate-400 text-sm leading-relaxed max-w-xs">
+            <span className="text-lg font-bold text-ink-950">Clement Kingsley</span>
+            <p className="text-ink-600 text-sm leading-relaxed max-w-xs">
               Full-stack developer passionate about creating innovative digital solutions that make a difference.
             </p>
             <div className="flex gap-2">
@@ -45,7 +45,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+                  className="p-2 rounded-lg text-ink-600 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"
                 >
                   {social.icon}
                 </a>
@@ -55,13 +55,13 @@ export default function Footer() {
 
           {/* Quick Links */}
           <motion.div {...fadeInUp} transition={{ delay: 0.08 }} className="space-y-4">
-            <h3 className="text-sm font-semibold text-white uppercase tracking-wider">Quick Links</h3>
+            <h3 className="text-sm font-semibold text-ink-950 uppercase tracking-wider">Quick Links</h3>
             <ul className="space-y-2.5">
               {navItems.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={resolveHref(link.href)}
-                    className="text-sm text-slate-400 hover:text-white transition-colors"
+                    className="text-sm text-ink-600 hover:text-blue-400 transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -72,8 +72,8 @@ export default function Footer() {
 
           {/* Contact */}
           <motion.div {...fadeInUp} transition={{ delay: 0.16 }} className="space-y-4">
-            <h3 className="text-sm font-semibold text-white uppercase tracking-wider">Get In Touch</h3>
-            <div className="space-y-3 text-sm text-slate-400">
+            <h3 className="text-sm font-semibold text-ink-950 uppercase tracking-wider">Get In Touch</h3>
+            <div className="space-y-3 text-sm text-ink-600">
               <p className="flex items-center gap-2.5">
                 <Mail className="h-4 w-4 shrink-0" />
                 {contactInfo.email}
@@ -91,16 +91,16 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-12 pt-8 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-slate-500 text-sm">
+        <div className="mt-12 pt-8 border-t border-ink-500 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-ink-600 text-sm">
             © {new Date().getFullYear()} Clement Kingsley. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
-            <p className="text-slate-500 text-sm">Built with Next.js & Tailwind CSS</p>
+            <p className="text-ink-600 text-sm">Built with Next.js & Tailwind CSS</p>
             <button
               onClick={scrollToTop}
               aria-label="Scroll to top"
-              className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+              className="p-2 rounded-lg text-ink-600 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"
             >
               <ArrowUp className="h-4 w-4" />
             </button>
