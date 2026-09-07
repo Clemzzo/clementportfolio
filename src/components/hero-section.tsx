@@ -29,16 +29,14 @@ const fadeUp = (delay: number) => ({
 export default function HeroSection() {
   return (
     <section id="home" className="relative overflow-x-clip bg-ink-0 pt-24 sm:pt-28 md:pt-36 pb-10">
-      {/* Backdrop: graph paper faded out at the edges, plus a warm bloom top-right */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute inset-0 grid-lines opacity-70 [mask-image:radial-gradient(ellipse_at_top,black,transparent_75%)]" />
+        <div className="absolute inset-0 grid-lines opacity-70 [mask-[radial-gradient(ellipse_at_top,black,transparent_75%)]" />
         <div className="absolute -top-24 right-0 h-64 w-64 sm:-right-8 sm:h-96 sm:w-96 md:-right-16 md:h-[520px] md:w-[520px] glow-brand blur-2xl opacity-80" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-12 gap-x-6 gap-y-8 lg:gap-y-12 items-center">
 
-          {/* Left: copy */}
           <div className="col-span-12 lg:col-span-7 order-2 lg:order-1">
             <motion.div {...fadeUp(0)}>
               <span className="inline-flex items-center gap-2.5 rounded-full border border-ink-400/70 bg-ink-100/60 px-3.5 py-1.5 font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-ink-800 backdrop-blur">
@@ -95,7 +93,6 @@ export default function HeroSection() {
               </a>
             </motion.div>
 
-            {/* Trust indicator */}
             <motion.div {...fadeUp(0.3)} className="mt-10 flex items-center gap-5">
               <div className="flex -space-x-3">
                 {['🇺🇸', '🇬🇧', '🇨🇦', '🇳🇬'].map((flag, i) => (
@@ -138,7 +135,6 @@ export default function HeroSection() {
             </motion.dl>
           </div>
 
-          {/* Right: portrait */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -174,8 +170,8 @@ export default function HeroSection() {
           </motion.div>
         </div>
 
-        {/* What I do — decorative scroller; the same services are listed in full in About.
-            Negative margin bleeds it to the container edge, past the horizontal padding. */}
+        {/* Services are listed in full in About. The negative margin bleeds the
+            track to the container edge, past the horizontal padding. */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
