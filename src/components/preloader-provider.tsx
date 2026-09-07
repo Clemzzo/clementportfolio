@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState, useSyncExternalStore } from 'react'
 import dynamic from 'next/dynamic'
 import { AnimatePresence, motion } from 'framer-motion'
 
@@ -8,17 +8,24 @@ const Preloader = dynamic(() => import('@/components/preloader'), { ssr: false }
 
 const STORAGE_KEY = 'clement-preloader-seen'
 
-export default function PreloaderProvider({ children }: { children: React.ReactNode }) {
-  const [showPreloader, setShowPreloader] = useState(false)
-  const [revealContent, setRevealContent] = useState(false)
+const subscribeToSeen = () => () => {}
 
-  useEffect(() => {
-    if (sessionStorage.getItem(STORAGE_KEY)) {
-      setRevealContent(true)
-    } else {
-      setShowPreloader(true)
-    }
-  }, [])
+function getSeenSnapshot() {
+  try {
+    return sessionStorage.getItem(STORAGE_KEY) !== null
+  } catch {
+    return false
+  }
+}
+
+const getSeenServerSnapshot = () => false
+
+export default function PreloaderProvider({ children }: { children: React.ReactNode }) {
+  const alreadySeen = useSyncExternalStore(subscribeToSeen, getSeenSnapshot, getSeenServerSnapshot)
+  const [dismissed, setDismissed] = useState(false)
+
+  const showPreloader = !alreadySeen && !dismissed
+  const revealContent = alreadySeen || dismissed
 
   useEffect(() => {
     if (!showPreloader) return
@@ -30,9 +37,12 @@ export default function PreloaderProvider({ children }: { children: React.ReactN
   }, [showPreloader])
 
   const handleComplete = useCallback(() => {
-    sessionStorage.setItem(STORAGE_KEY, '1')
-    setShowPreloader(false)
-    setRevealContent(true)
+    try {
+      sessionStorage.setItem(STORAGE_KEY, '1')
+    } catch {
+      // sessionStorage unavailable (private mode, blocked site data) — reveal anyway
+    }
+    setDismissed(true)
   }, [])
 
   return (

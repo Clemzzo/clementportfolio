@@ -5,15 +5,15 @@ import { AnimatePresence, motion } from 'framer-motion'
 
 const BOOT_LINES = [
   'Initializing portfolio...',
-  'Loading 10+ shipped projects...',
-  'Compiling 3 yrs 8 mo of experience...',
+  'Loading 4+ shipped projects...',
+  'Compiling 3 yrs plus of experience...',
   'Optimizing for teams and founders...',
   'Ready to build with you 🚀',
 ]
 
 const STATUS_LINES = [
   'Solving real business problems...',
-  'Building products that grow revenue...',
+  'Building custom products that grow revenue...',
   'Designing for scale and impact...',
   'Open to freelance and full time roles...',
 ]
@@ -25,7 +25,7 @@ const STATS: { value: number | null; suffix?: string; symbol?: string; label: st
   { value: null, symbol: '∞', label: 'Problem Solver' },
 ]
 
-const TOTAL_DURATION = 3200
+const TOTAL_DURATION = 5000
 const BAR_SEGMENTS = 16
 
 function CountUp({
@@ -59,7 +59,7 @@ function CountUp({
   return (
     <>
       {display}
-      <span className="text-blue-400 text-xl">{suffix}</span>
+      <span className="text-brand-400 text-xl">{suffix}</span>
     </>
   )
 }
@@ -69,13 +69,10 @@ function useTypewriter(lines: string[], charDelay = 26, linePause = 160) {
   const [currentLine, setCurrentLine] = useState('')
   const [lineIndex, setLineIndex] = useState(0)
   const [charIndex, setCharIndex] = useState(0)
-  const [done, setDone] = useState(false)
+  const done = lineIndex >= lines.length
 
   useEffect(() => {
-    if (lineIndex >= lines.length) {
-      setDone(true)
-      return
-    }
+    if (done) return
 
     const line = lines[lineIndex]
 
@@ -94,28 +91,27 @@ function useTypewriter(lines: string[], charDelay = 26, linePause = 160) {
       setLineIndex((i) => i + 1)
     }, linePause)
     return () => clearTimeout(timer)
-  }, [lines, lineIndex, charIndex, charDelay, linePause])
+  }, [lines, lineIndex, charIndex, charDelay, linePause, done])
 
   return { displayLines, currentLine, done }
 }
 
-function MatrixRain() {
-  const columns = useRef(
-    Array.from({ length: 18 }, (_, i) => ({
-      id: i,
-      x: `${(i / 18) * 100}%`,
-      delay: Math.random() * 4,
-      duration: 3 + Math.random() * 4,
-      chars: Array.from({ length: 12 }, () => '01<>/{}[]'[Math.floor(Math.random() * 9)]),
-    }))
-  )
+// Built once at module scope: randomising during render violates React's purity rules.
+const MATRIX_COLUMNS = Array.from({ length: 18 }, (_, i) => ({
+  id: i,
+  x: `${(i / 18) * 100}%`,
+  delay: Math.random() * 4,
+  duration: 3 + Math.random() * 4,
+  chars: Array.from({ length: 12 }, () => '01<>/{}[]'[Math.floor(Math.random() * 9)]),
+}))
 
+function MatrixRain() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-[0.12]">
-      {columns.current.map((column) => (
+      {MATRIX_COLUMNS.map((column) => (
         <div
           key={column.id}
-          className="absolute top-0 font-mono text-[10px] text-blue-400 leading-tight animate-matrix-fall"
+          className="absolute top-0 font-mono text-[10px] text-brand-400 leading-tight animate-matrix-fall"
           style={{
             left: column.x,
             animationDelay: `${column.delay}s`,
@@ -136,7 +132,7 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
   const [statusIndex, setStatusIndex] = useState(0)
   const [phase, setPhase] = useState<'loading' | 'welcome' | 'exit'>('loading')
   const [showStats, setShowStats] = useState(false)
-  const startedAt = useRef(Date.now())
+  const startedAt = useRef<number | null>(null)
   const finished = useRef(false)
 
   const { displayLines, currentLine, done } = useTypewriter(BOOT_LINES)
@@ -149,8 +145,10 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
   }, [onComplete])
 
   useEffect(() => {
+    startedAt.current ??= Date.now()
+    const start = startedAt.current
     const interval = setInterval(() => {
-      const elapsed = Math.min((Date.now() - startedAt.current) / TOTAL_DURATION, 1)
+      const elapsed = Math.min((Date.now() - start) / TOTAL_DURATION, 1)
       setProgress(elapsed)
       setStatusIndex(Math.min(Math.floor(elapsed * STATUS_LINES.length), STATUS_LINES.length - 1))
       if (elapsed > 0.35) setShowStats(true)
@@ -184,7 +182,7 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
         className="absolute inset-0 opacity-[0.07]"
         style={{
           backgroundImage:
-            'linear-gradient(rgba(96,165,250,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(96,165,250,0.5) 1px, transparent 1px)',
+            'linear-gradient(rgba(248,145,48,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(248,145,48,0.5) 1px, transparent 1px)',
           backgroundSize: '48px 48px',
         }}
       />
@@ -193,7 +191,7 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
       <button
         onClick={finish}
         aria-label="Skip intro"
-        className="absolute top-6 right-6 z-10 font-mono text-[10px] uppercase tracking-[0.22em] text-ink-600 hover:text-blue-400 transition-colors px-3 py-1.5 rounded border border-ink-400 hover:border-blue-400/40"
+        className="absolute top-6 right-6 z-10 font-mono text-[10px] uppercase tracking-[0.22em] text-ink-600 hover:text-brand-400 transition-colors px-3 py-1.5 rounded border border-ink-400 hover:border-brand-400/40"
       >
         Skip →
       </button>
@@ -205,11 +203,11 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
           transition={{ duration: 0.5 }}
           className="mb-10"
         >
-          <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-blue-400">
-            Full Stack · Web · Product · Design
+          <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-brand-400">
+            Full Stack · Web · Mobile . Product · Design
           </p>
           <p className="text-lg text-ink-950 font-semibold mt-1">
-            Clement Kingsley — building products that ship
+            Clement Kingsley — building products that ship and generate revenue for teams and founders.
           </p>
           <p className="font-mono text-[10px] text-ink-600 mt-1.5">
             Available for freelance projects and full time roles
@@ -219,15 +217,15 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
         <div className="rounded-lg border border-ink-400 bg-ink-100/80 backdrop-blur-sm p-5 md:p-6 font-mono text-[12px] md:text-[13px] leading-relaxed min-h-40">
           {displayLines.map((line, i) => (
             <div key={i} className="text-ink-700 mb-1">
-              <span className="text-blue-400/70 mr-2">&gt;</span>
+              <span className="text-brand-400/70 mr-2">&gt;</span>
               {line}
             </div>
           ))}
           {currentLine && (
             <div className="text-ink-900">
-              <span className="text-blue-400/70 mr-2">&gt;</span>
+              <span className="text-brand-400/70 mr-2">&gt;</span>
               {currentLine}
-              <span className="inline-block w-[0.55ch] h-[1em] bg-blue-400 ml-0.5 align-[-0.12em] animate-blink" />
+              <span className="inline-block w-[0.55ch] h-[1em] bg-brand-400 ml-0.5 align-[-0.12em] animate-blink" />
             </div>
           )}
           <AnimatePresence>
@@ -237,7 +235,7 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
                 animate={{ opacity: 1 }}
                 className="text-ink-950 mt-3"
               >
-                <span className="text-blue-400 mr-2">&gt;</span>
+                <span className="text-brand-400 mr-2">&gt;</span>
                 Welcome. Let&apos;s build something great.
               </motion.div>
             )}
@@ -246,7 +244,7 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
 
         <div className="mt-8">
           <div className="flex items-center gap-3 font-mono text-[11px] text-ink-700">
-            <span className="text-blue-400 tracking-wider shrink-0">
+            <span className="text-brand-400 tracking-wider shrink-0">
               [{'#'.repeat(filled)}
               {'░'.repeat(BAR_SEGMENTS - filled)}]
             </span>
@@ -261,7 +259,7 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
           </div>
           <div className="mt-2 h-px bg-ink-300 overflow-hidden">
             <motion.div
-              className="h-full bg-linear-to-r from-blue-500/60 via-blue-400 to-blue-500/60"
+              className="h-full bg-linear-to-r from-brand-500/60 via-brand-400 to-brand-500/60"
               style={{ width: `${progress * 100}%` }}
               transition={{ duration: 0.1 }}
             />
@@ -286,7 +284,7 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
                 >
                   <div className="text-2xl md:text-3xl font-bold tracking-tight text-ink-950 tabular-nums">
                     {stat.symbol ? (
-                      <span className="text-blue-400">{stat.symbol}</span>
+                      <span className="text-brand-400">{stat.symbol}</span>
                     ) : (
                       <CountUp target={stat.value as number} suffix={stat.suffix} />
                     )}

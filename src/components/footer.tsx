@@ -28,7 +28,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-ink-0 border-t border-ink-500">
-      <div className="max-w-6xl mx-auto px-6 py-14">
+      <div className="max-w-7xl mx-auto px-6 py-14">
         <div className="grid md:grid-cols-3 gap-10">
 
           {/* Brand */}
@@ -45,7 +45,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="p-2 rounded-lg text-ink-600 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"
+                  className="p-2 rounded-lg text-ink-600 hover:text-brand-400 hover:bg-brand-500/10 transition-colors"
                 >
                   {social.icon}
                 </a>
@@ -61,7 +61,7 @@ export default function Footer() {
                 <li key={link.name}>
                   <Link
                     href={resolveHref(link.href)}
-                    className="text-sm text-ink-600 hover:text-blue-400 transition-colors"
+                    className="text-sm text-ink-600 hover:text-brand-400 transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -100,7 +100,7 @@ export default function Footer() {
             <button
               onClick={scrollToTop}
               aria-label="Scroll to top"
-              className="p-2 rounded-lg text-ink-600 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"
+              className="p-2 rounded-lg text-ink-600 hover:text-brand-400 hover:bg-brand-500/10 transition-colors"
             >
               <ArrowUp className="h-4 w-4" />
             </button>

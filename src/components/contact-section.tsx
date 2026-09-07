@@ -46,10 +46,10 @@ export default function ContactSection() {
 
   return (
     <section id="contact" className="py-24 bg-ink-50">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6">
 
         <motion.div {...fadeInUp} className="mb-16 max-w-2xl">
-          <span className="text-blue-400 text-sm font-semibold uppercase tracking-wider">Contact</span>
+          <span className="text-brand-400 text-sm font-semibold uppercase tracking-wider">Contact</span>
           <h2 className="text-4xl md:text-5xl font-bold text-ink-950 mt-2 tracking-tight">
             Let&apos;s Work Together
           </h2>
@@ -62,22 +62,22 @@ export default function ContactSection() {
         <div className="grid lg:grid-cols-5 gap-6">
 
           <motion.div {...fadeInUp} className="lg:col-span-2 space-y-4">
-            <div className="bg-ink-100 rounded-2xl p-7 border border-ink-400/80 hover:border-blue-500/60 transition-colors">
+            <div className="bg-ink-100 rounded-2xl p-7 border border-ink-400/80 hover:border-brand-500/60 transition-colors">
               <p className="text-ink-700 text-[15px] leading-relaxed">
                 Currently open to freelance projects and full-time roles in frontend, full-stack, and mobile development.
               </p>
             </div>
 
-            <div className="bg-ink-100 rounded-2xl border border-ink-400/80 overflow-hidden hover:border-blue-500/60 transition-colors">
+            <div className="bg-ink-100 rounded-2xl border border-ink-400/80 overflow-hidden hover:border-brand-500/60 transition-colors">
               {contactItems.map((item, i) => (
                 <a
                   key={item.label}
                   href={item.href}
-                  className={`group flex items-center gap-4 p-5 hover:bg-blue-500/10 transition-colors ${i !== contactItems.length - 1 ? 'border-b border-ink-400/60' : ''
+                  className={`group flex items-center gap-4 p-5 hover:bg-brand-500/10 transition-colors ${i !== contactItems.length - 1 ? 'border-b border-ink-400/60' : ''
                     }`}
                 >
-                  <div className="shrink-0 p-2.5 rounded-xl bg-linear-to-br from-blue-500/10 to-blue-500/10 border border-blue-500/20">
-                    <item.icon className="w-4 h-4 text-blue-400" strokeWidth={2.25} />
+                  <div className="shrink-0 p-2.5 rounded-xl bg-linear-to-br from-brand-500/10 to-brand-500/10 border border-brand-500/20">
+                    <item.icon className="w-4 h-4 text-brand-400" strokeWidth={2.25} />
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-[11px] font-semibold uppercase tracking-wider text-ink-600 mb-0.5">
@@ -87,7 +87,7 @@ export default function ContactSection() {
                       {item.value}
                     </p>
                   </div>
-                  <ArrowUpRight className="w-4 h-4 text-ink-700 shrink-0 transition-all group-hover:text-blue-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  <ArrowUpRight className="w-4 h-4 text-ink-700 shrink-0 transition-all group-hover:text-brand-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </a>
               ))}
             </div>
@@ -110,7 +110,7 @@ export default function ContactSection() {
                     onChange={handleChange}
                     required
                     placeholder="Full name"
-                    className="h-11 rounded-lg border-ink-400 bg-ink-200/60 text-ink-950 placeholder:text-ink-600 focus-visible:ring-blue-500 focus-visible:bg-ink-100 transition-colors"
+                    className="h-11 rounded-lg border-ink-400 bg-ink-200/60 text-ink-950 placeholder:text-ink-600 focus-visible:ring-brand-500 focus-visible:bg-ink-100 transition-colors"
                   />
                 </div>
                 <div className="space-y-1.5">
@@ -124,7 +124,7 @@ export default function ContactSection() {
                     onChange={handleChange}
                     required
                     placeholder="you@example.com"
-                    className="h-11 rounded-lg border-ink-400 bg-ink-200/60 text-ink-950 placeholder:text-ink-600 focus-visible:ring-blue-500 focus-visible:bg-ink-100 transition-colors"
+                    className="h-11 rounded-lg border-ink-400 bg-ink-200/60 text-ink-950 placeholder:text-ink-600 focus-visible:ring-brand-500 focus-visible:bg-ink-100 transition-colors"
                   />
                 </div>
               </div>
@@ -140,14 +140,14 @@ export default function ContactSection() {
                   required
                   placeholder="Tell me about your project, timeline, and what you're looking for..."
                   rows={6}
-                  className="rounded-lg border-ink-400 bg-ink-200/60 text-ink-950 placeholder:text-ink-600 focus-visible:ring-blue-500 focus-visible:bg-ink-100 resize-none transition-colors"
+                  className="rounded-lg border-ink-400 bg-ink-200/60 text-ink-950 placeholder:text-ink-600 focus-visible:ring-brand-500 focus-visible:bg-ink-100 resize-none transition-colors"
                 />
               </div>
 
               <div className="flex flex-col sm:flex-row sm:items-center gap-4 pt-2">
                 <Button
                   type="submit"
-                  className="group h-11 px-6 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold gap-2 shrink-0"
+                  className="group h-11 px-6 rounded-lg bg-brand-600 hover:bg-brand-700 text-white font-semibold gap-2 shrink-0"
                   disabled={status === 'loading'}
                 >
                   {status === 'loading' ? 'Sending…' : 'Send Message'}

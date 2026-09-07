@@ -41,13 +41,13 @@ export default function Navigation() {
 
   return (
     <nav className={`fixed top-0 inset-x-0 z-50 transition-all duration-200 ${scrolled ? 'bg-ink-0 border-b border-ink-400 shadow-sm' : 'bg-ink-0/80 backdrop-blur-sm'}`}>
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5 group">
           <div className="relative w-8 h-8 overflow-hidden rounded-full border border-ink-400">
             <Image src="/clemzzo.png" alt="Clement" fill sizes="32px" className="object-cover" />
           </div>
-          <span className="text-sm font-semibold text-ink-950 group-hover:text-blue-400 transition-colors">
+          <span className="text-sm font-semibold text-ink-950 group-hover:text-brand-400 transition-colors">
             Clement.K
           </span>
         </Link>
@@ -60,8 +60,8 @@ export default function Navigation() {
               href={resolveHref(item.href)}
               className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
                 activeSection === item.href
-                  ? 'text-blue-400 bg-blue-500/10'
-                  : 'text-ink-600 hover:text-blue-400 hover:bg-blue-500/10'
+                  ? 'text-brand-400 bg-brand-500/10'
+                  : 'text-ink-600 hover:text-brand-400 hover:bg-brand-500/10'
               }`}
             >
               {item.name}
@@ -71,7 +71,7 @@ export default function Navigation() {
 
         {/* Mobile button */}
         <button
-          className="md:hidden p-2 rounded-md text-ink-600 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"
+          className="md:hidden p-2 rounded-md text-ink-600 hover:text-brand-400 hover:bg-brand-500/10 transition-colors"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
@@ -89,7 +89,7 @@ export default function Navigation() {
             transition={{ duration: 0.2 }}
             className="md:hidden border-t border-ink-400 bg-ink-0 overflow-hidden"
           >
-            <div className="max-w-6xl mx-auto px-6 py-3 flex flex-col gap-1">
+            <div className="max-w-7xl mx-auto px-6 py-3 flex flex-col gap-1">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
@@ -97,8 +97,8 @@ export default function Navigation() {
                   onClick={() => setMobileOpen(false)}
                   className={`px-4 py-3 rounded-md text-sm font-medium transition-colors ${
                     activeSection === item.href
-                      ? 'text-blue-400 bg-blue-500/10'
-                      : 'text-ink-600 hover:text-blue-400 hover:bg-blue-500/10'
+                      ? 'text-brand-400 bg-brand-500/10'
+                      : 'text-ink-600 hover:text-brand-400 hover:bg-brand-500/10'
                   }`}
                 >
                   {item.name}

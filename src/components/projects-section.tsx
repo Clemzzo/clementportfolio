@@ -15,7 +15,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.55, delay: (index % 2) * 0.08, ease: [0.22, 1, 0.36, 1] }}
-      className="group relative flex flex-col overflow-hidden rounded-2xl border border-ink-400/80 bg-ink-100 hover:border-blue-500/60 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300"
+      className="group relative flex flex-col overflow-hidden rounded-2xl border border-ink-400/80 bg-ink-100 hover:border-brand-500/60 hover:shadow-xl hover:shadow-brand-500/10 transition-all duration-300"
     >
       {/* Card-wide link sits under the interactive footer row */}
       <Link
@@ -48,7 +48,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           <h3 className="text-2xl font-semibold text-ink-950 tracking-tight">
             {project.title}
           </h3>
-          <span className="text-ink-600 shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-blue-400">
+          <span className="text-ink-600 shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-brand-400">
             ↗
           </span>
         </div>
@@ -61,7 +61,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           {project.technologies.map((tech) => (
             <span
               key={tech}
-              className="rounded-full border border-ink-400/60 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.12em] text-ink-600 transition-colors group-hover:border-blue-500/30 group-hover:text-blue-300"
+              className="rounded-full border border-ink-400/60 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.12em] text-ink-600 transition-colors group-hover:border-brand-500/30 group-hover:text-brand-300"
             >
               {tech}
             </span>
@@ -73,7 +73,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             href={project.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="group/btn inline-flex items-center gap-1 text-ink-800 hover:text-blue-400 transition-colors"
+            className="group/btn inline-flex items-center gap-1 text-ink-800 hover:text-brand-400 transition-colors"
           >
             Live site
             <ArrowUpRight className="w-3 h-3 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
@@ -85,7 +85,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                 href={project.repoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-ink-600 hover:text-blue-400 transition-colors"
+                className="inline-flex items-center gap-1.5 text-ink-600 hover:text-brand-400 transition-colors"
               >
                 <GithubIcon className="w-3 h-3" />
                 Source
@@ -101,7 +101,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 export default function ProjectsSection() {
   return (
     <section id="projects" className="py-24 bg-ink-50">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6">
 
         {/* Header — numbered index and label beside the statement */}
         <motion.header
@@ -109,7 +109,7 @@ export default function ProjectsSection() {
           className="grid grid-cols-12 gap-x-6 gap-y-4 border-t border-ink-400/60 pt-6 md:pt-8"
         >
           <div className="col-span-12 md:col-span-3 flex items-center gap-3">
-            <span className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-blue-500/40 font-mono text-[10px] text-blue-400">
+            <span className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-brand-500/40 font-mono text-[10px] text-brand-400">
               02
             </span>
             <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink-700">
@@ -120,7 +120,7 @@ export default function ProjectsSection() {
           <div className="col-span-12 md:col-span-9">
             <h2 className="font-semibold text-3xl md:text-5xl lg:text-[3.4rem] leading-[1.03] tracking-tight text-ink-950 text-balance">
               Things I&apos;ve shipped
-              <span className="font-instrument italic font-normal text-blue-400"> end to end.</span>
+              <span className="font-instrument italic font-normal text-brand-400"> end to end.</span>
             </h2>
             <p className="mt-4 max-w-2xl text-ink-700 text-sm md:text-base leading-relaxed">
               A selection of products, applications, and systems I&apos;ve designed, built, and
@@ -142,7 +142,7 @@ export default function ProjectsSection() {
             href="https://github.com/clemzzo"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-ink-900 hover:text-blue-400 transition-colors"
+            className="text-ink-900 hover:text-brand-400 transition-colors"
           >
             See more on GitHub →
           </a>

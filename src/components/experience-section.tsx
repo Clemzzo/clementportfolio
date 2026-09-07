@@ -50,16 +50,16 @@ const roles: Role[] = [
 export default function ExperienceSection() {
   return (
     <section id="experience" className="py-24 bg-ink-0">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6">
 
         {/* Header */}
         <motion.div {...fadeInUp} className="mb-12 md:mb-16 text-center">
-          <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-blue-400">
+          <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-brand-400">
             Experience
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-ink-950 mt-3 tracking-tight max-w-3xl mx-auto text-balance">
             Three years, four products
-            <span className="font-instrument italic font-normal text-blue-400"> still shipping.</span>
+            <span className="font-instrument italic font-normal text-brand-400"> still shipping.</span>
           </h2>
         </motion.div>
 
@@ -71,9 +71,9 @@ export default function ExperienceSection() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.55, delay: index * 0.07, ease: [0.22, 1, 0.36, 1] }}
-              className="group grid grid-cols-12 gap-x-6 gap-y-2 items-baseline rounded-2xl border border-ink-400 bg-ink-100 p-6 md:p-7 hover:border-blue-500/60 hover:shadow-lg hover:shadow-blue-500/10 transition-all duration-200"
+              className="group grid grid-cols-12 gap-x-6 gap-y-2 items-baseline rounded-2xl border border-ink-400 bg-ink-100 p-6 md:p-7 hover:border-brand-500/60 hover:shadow-lg hover:shadow-brand-500/10 transition-all duration-200"
             >
-              <div className="col-span-12 md:col-span-1 font-mono text-[11px] uppercase tracking-[0.2em] text-blue-400">
+              <div className="col-span-12 md:col-span-1 font-mono text-[11px] uppercase tracking-[0.2em] text-brand-400">
                 {String(index + 1).padStart(2, '0')}
               </div>
 

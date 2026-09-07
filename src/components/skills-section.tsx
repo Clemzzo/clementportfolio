@@ -2,7 +2,8 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { Code, Database, Server, Layout, Cpu, Wrench } from 'lucide-react'
+import { Code, Database, Server, Layout, Cpu, Wrench, Braces, Layers, Target } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 import { fadeInUp } from '@/lib/motion'
 
 const TECH_ICONS: Record<string, string> = {
@@ -25,8 +26,10 @@ const TECH_ICONS: Record<string, string> = {
   'FirebaseDB': '/firebasedb.svg',
   'PostgreSQL': '/postgresql.svg',
   'Supabase': '/supabase.svg',
+  'Neon': '/neon.png',
   'MongoDB': '/mongo.svg',
   'Cloudflare': '/cloudflare.svg',
+  'Convex': '/convex.png',
   'GitHub': '/github.svg',
   'Postman': '/postman.svg',
   'VS Code': '/vscode.svg',
@@ -51,7 +54,16 @@ function TechIcon({ name, color }: { name: string; color: string }) {
   return <Code className="w-4 h-4" style={{ color }} />
 }
 
-const skillCategories = [
+type SkillCategory = {
+  title: string
+  description: string
+  icon: LucideIcon
+  /** Render plain text chips — for non-technology skills with no logo. */
+  iconless?: boolean
+  skills: { name: string; color?: string }[]
+}
+
+const skillCategories: SkillCategory[] = [
   {
     title: 'Frontend',
     description: 'Crafting fast, responsive interfaces with modern frameworks.',
@@ -105,17 +117,64 @@ const skillCategories = [
       { name: 'Vercel', color: '#000000' },
     ],
   },
+  {
+    title: 'Languages',
+    description: 'The core languages I write in every day, front to back.',
+    icon: Braces,
+    skills: [
+      { name: 'TypeScript', color: '#3178C6' },
+      { name: 'JavaScript', color: '#F7DF1E' },
+      { name: 'HTML5', color: '#E34F26' },
+      { name: 'CSS', color: '#1572B6' },
+      { name: 'SQL', color: '#4479A1' },
+    ],
+  },
+  {
+    title: 'State Management',
+    description: 'Keeping client and server state predictable and in sync.',
+    icon: Layers,
+    skills: [
+      { name: 'Redux', color: '#764ABC' },
+      { name: 'Zustand', color: '#B8860B' },
+      { name: 'PostgreSQL', color: '#4169E1' },
+      { name: 'Prisma', color: '#2D3748' },
+    ],
+  },
+  {
+    title: 'Practice',
+    description: 'How I work — the habits behind shipping software teams can rely on.',
+    icon: Target,
+    iconless: true,
+    skills: [
+      { name: 'Problem Solving' },
+      { name: 'Team Collaboration' },
+      { name: 'Performance' },
+      { name: 'Responsive and Cross Browser' },
+      { name: 'Technical Writing' },
+    ],
+  },
+  {
+    title: 'Infra and Tooling',
+    description: 'The everyday workbench — version control and developer experience.',
+    icon: Wrench,
+    skills: [
+      { name: 'Git' },
+      { name: 'GitHub' },
+      { name: 'Postman' },
+      { name: 'VS Code' },
+      { name: 'NPM' },
+      { name: 'pnpm' },
+    ],
+  },
 ]
-
-const tools = ['Figma', 'Git', 'GitHub', 'Postman', 'VS Code', 'NPM']
 
 export default function SkillsSection() {
   return (
     <section id="skills" className="py-24 bg-ink-0">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6">
 
         <motion.div {...fadeInUp} className="mb-16 max-w-2xl">
-          <span className="text-blue-400 text-sm font-semibold uppercase tracking-wider">Stack</span>
+          <span className="text-brand-400 text-sm font-semibold uppercase tracking-wider">Stack</span>
           <h2 className="text-4xl md:text-5xl font-bold text-ink-950 mt-2 tracking-tight">
             Tech Arsenal
           </h2>
@@ -131,11 +190,11 @@ export default function SkillsSection() {
               key={category.title}
               {...fadeInUp}
               transition={{ delay: index * 0.08 }}
-              className="group relative bg-ink-100 rounded-2xl p-7 border border-ink-400/80 hover:border-blue-500/60 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300"
+              className="group relative bg-ink-100 rounded-2xl p-7 border border-ink-400/80 hover:border-brand-500/60 hover:shadow-xl hover:shadow-brand-500/10 transition-all duration-300"
             >
               <div className="flex items-start gap-4 mb-6">
-                <div className="shrink-0 p-2.5 rounded-xl bg-linear-to-br from-blue-500/10 to-blue-500/10 border border-blue-500/20">
-                  <category.icon className="w-5 h-5 text-blue-400" strokeWidth={2.25} />
+                <div className="shrink-0 p-2.5 rounded-xl bg-linear-to-br from-brand-500/10 to-brand-500/10 border border-brand-500/20">
+                  <category.icon className="w-5 h-5 text-brand-400" strokeWidth={2.25} />
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2">
@@ -154,9 +213,11 @@ export default function SkillsSection() {
                 {category.skills.map((skill) => (
                   <div
                     key={skill.name}
-                    className="inline-flex items-center gap-2 px-3 py-1.5 bg-ink-200 border border-ink-400/60 rounded-full text-[13px] font-medium text-ink-800 hover:bg-blue-500/10 hover:border-blue-500/60 hover:text-blue-300 hover:shadow-sm hover:shadow-blue-500/10 transition-all"
+                    className="inline-flex items-center gap-2 px-3 py-1.5 bg-ink-200 border border-ink-400/60 rounded-full text-[13px] font-medium text-ink-800 hover:bg-brand-500/10 hover:border-brand-500/60 hover:text-brand-300 hover:shadow-sm hover:shadow-brand-500/10 transition-all"
                   >
-                    <TechIcon name={skill.name} color={skill.color} />
+                    {!category.iconless && (
+                      <TechIcon name={skill.name} color={skill.color ?? '#64748b'} />
+                    )}
                     <span>{skill.name}</span>
                   </div>
                 ))}
@@ -164,40 +225,6 @@ export default function SkillsSection() {
             </motion.div>
           ))}
         </div>
-
-        <motion.div
-          {...fadeInUp}
-          className="mt-5 bg-ink-100 rounded-2xl p-7 border border-ink-400/80 hover:border-blue-500/60 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300"
-        >
-          <div className="flex items-start gap-4 mb-6">
-            <div className="shrink-0 p-2.5 rounded-xl bg-linear-to-br from-blue-500/10 to-blue-500/10 border border-blue-500/20">
-              <Wrench className="w-5 h-5 text-blue-400" strokeWidth={2.25} />
-            </div>
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-2">
-                <h3 className="text-base font-bold text-ink-950">Daily Tools</h3>
-                <span className="text-[11px] font-medium text-ink-600 tabular-nums">
-                  {tools.length}
-                </span>
-              </div>
-              <p className="text-[13px] text-ink-600 mt-0.5 leading-snug">
-                The everyday workbench — design, version control, and developer experience.
-              </p>
-            </div>
-          </div>
-
-          <div className="flex flex-wrap gap-2">
-            {tools.map((tool) => (
-              <div
-                key={tool}
-                className="inline-flex items-center gap-2 px-3 py-1.5 bg-ink-200 border border-ink-400/60 rounded-full text-[13px] font-medium text-ink-800 hover:bg-blue-500/10 hover:border-blue-500/60 hover:text-blue-300 hover:shadow-sm hover:shadow-blue-500/10 transition-all"
-              >
-                <TechIcon name={tool} color="#64748b" />
-                <span>{tool}</span>
-              </div>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   )

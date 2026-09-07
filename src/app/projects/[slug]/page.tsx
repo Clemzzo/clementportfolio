@@ -43,14 +43,14 @@ export default async function ProjectDetailPage({
 
           <Link
             href="/projects"
-            className="group inline-flex items-center gap-1.5 text-sm font-medium text-ink-600 hover:text-blue-400 transition-colors mb-10"
+            className="group inline-flex items-center gap-1.5 text-sm font-medium text-ink-600 hover:text-brand-400 transition-colors mb-10"
           >
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" />
             Back to projects
           </Link>
 
           <header className="mb-10">
-            <span className="inline-flex items-center text-blue-400 text-sm font-semibold uppercase tracking-wider">
+            <span className="inline-flex items-center text-brand-400 text-sm font-semibold uppercase tracking-wider">
               {project.category}
             </span>
             <h1 className="text-4xl md:text-5xl font-bold text-ink-950 mt-3 tracking-tight">
@@ -65,7 +65,7 @@ export default async function ProjectDetailPage({
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-1.5 h-11 px-5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold transition-colors"
+                className="group inline-flex items-center gap-1.5 h-11 px-5 rounded-lg bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold transition-colors"
               >
                 Visit Live Site
                 <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -103,8 +103,8 @@ export default async function ProjectDetailPage({
                   key={feature.title}
                   className="flex gap-4 p-5 bg-ink-100/80 rounded-2xl border border-ink-400/80"
                 >
-                  <div className="shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500/10 to-blue-500/10 border border-blue-500/20 flex items-center justify-center">
-                    <Check className="w-4 h-4 text-blue-400" strokeWidth={2.5} />
+                  <div className="shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-brand-500/10 to-brand-500/10 border border-brand-500/20 flex items-center justify-center">
+                    <Check className="w-4 h-4 text-brand-400" strokeWidth={2.5} />
                   </div>
                   <div className="flex-1 min-w-0">
                     <h3 className="text-sm font-semibold text-ink-950 mb-1">

@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
+/* Tailwind CSS v4 theme directive; supported by the Tailwind PostCSS plugin. */
+/* stylelint-disable-next-line at-rule-no-unknown */
 @theme {
   --font-poppins: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
   --font-instrument: var(--font-instrument-serif), ui-serif, Georgia, serif;
@@ -18,6 +20,13 @@
   --color-ink-800: #c2c2c9;
   --color-ink-900: #ececef;
   --color-ink-950: #fbfbfc;
+
+  /* Brand scale — built around #EB780C, the accent used across the site */
+  --color-brand-300: #fbab60;
+  --color-brand-400: #f89130;
+  --color-brand-500: #eb780c;
+  --color-brand-600: #ce6809;
+  --color-brand-700: #ab5707;
 
   /* Semantic tokens — these are what bg-background, bg-card, border-input etc. resolve to */
   --color-background: hsl(var(--background));
@@ -49,7 +58,7 @@
     --card-foreground: 240 20% 99%;
     --popover: 240 5% 8%;
     --popover-foreground: 240 20% 99%;
-    --primary: 221 83% 53%;
+    --primary: 29 90% 48%;
     --primary-foreground: 0 0% 100%;
     --secondary: 240 5% 11%;
     --secondary-foreground: 240 20% 99%;
@@ -61,7 +70,7 @@
     --destructive-foreground: 0 0% 100%;
     --border: 240 6% 18%;
     --input: 240 6% 18%;
-    --ring: 217 91% 60%;
+    --ring: 29 93% 58%;
     --radius: 0.5rem;
   }
 
@@ -140,6 +149,107 @@
   background-size: 100% 2px;
 }
 
+/* Sheen sweep — a diagonal highlight parked just off the left edge that slides
+   across on hover. The element clips it, so it reads as a glint over the fill. */
+.btn-sheen {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-sheen::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.25) 50%,
+    transparent 80%
+  );
+  transform: translateX(-120%);
+  transition: transform 0.65s ease;
+}
+
+.btn-sheen:hover::after {
+  transform: translateX(120%);
+}
+
+/* Hero decoration ---------------------------------------------------- */
+
+/* Faint 64px graph paper behind the hero */
+.grid-lines {
+  background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 0),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.035) 1px, transparent 0);
+  background-size: 64px 64px;
+}
+
+/* Soft brand bloom — blurred further by a blur-* utility at the call site */
+.glow-brand {
+  background: radial-gradient(
+    closest-side,
+    rgba(235, 120, 12, 0.32),
+    rgba(235, 120, 12, 0.08) 60%,
+    transparent 100%
+  );
+}
+
+/* Rotating conic sweep sitting under a rounded frame, read as a lit edge */
+.ring-shimmer {
+  background: conic-gradient(
+    from 0deg,
+    rgba(235, 120, 12, 0) 0deg,
+    rgba(235, 120, 12, 0.9) 90deg,
+    rgba(251, 171, 96, 0.2) 180deg,
+    rgba(235, 120, 12, 0) 300deg
+  );
+  animation: spin-slow 8s linear infinite;
+  transform-origin: center center;
+}
+
+/* Gradient-filled text for the emphasised half of the headline */
+.accent-gradient {
+  background: linear-gradient(120deg, #fbab60, #eb780c 60%, #ab5707);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+  70%,
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
 /* Marquee — the track holds two identical halves, so translating it
    -50% lands exactly on the start of the second half and loops seamlessly */
 @keyframes marquee-inline {
@@ -170,8 +280,15 @@
 @media (prefers-reduced-motion: reduce) {
   .animate-matrix-fall,
   .animate-blink,
-  .marquee-track {
+  .marquee-track,
+  .ring-shimmer,
+  .animate-float,
+  .animate-pulse-ring {
     animation: none;
+  }
+
+  .btn-sheen::after {
+    display: none;
   }
 }
 

@@ -42,16 +42,16 @@ const services = [
 export default function AboutSection() {
   return (
     <section id="about" className="py-24 bg-ink-50">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6">
 
         {/* Header */}
         <motion.div {...fadeInUp} className="mb-12 md:mb-16">
-          <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-blue-400">
+          <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-brand-400">
             About
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-ink-950 mt-3 tracking-tight max-w-3xl text-balance">
             The developer behind
-            <span className="font-instrument italic font-normal text-blue-400"> the product.</span>
+            <span className="font-instrument italic font-normal text-brand-400"> the product.</span>
           </h2>
         </motion.div>
 
@@ -117,16 +117,16 @@ export default function AboutSection() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.07, ease: [0.22, 1, 0.36, 1] }}
-                  className="group rounded-2xl border border-ink-400 bg-ink-100 p-5 hover:border-blue-500/60 hover:shadow-lg hover:shadow-blue-500/10 transition-all duration-200"
+                  className="group rounded-2xl border border-ink-400 bg-ink-100 p-5 hover:border-brand-500/60 hover:shadow-lg hover:shadow-brand-500/10 transition-all duration-200"
                 >
                   <div className="flex items-start gap-4">
-                    <span className="mt-1 font-mono text-[11px] text-blue-400 shrink-0">
+                    <span className="mt-1 font-mono text-[11px] text-brand-400 shrink-0">
                       {String(index + 1).padStart(2, '0')}
                     </span>
 
                     <div className="min-w-0">
                       <div className="flex items-center gap-2">
-                        <service.icon className="w-4 h-4 text-blue-400 shrink-0" />
+                        <service.icon className="w-4 h-4 text-brand-400 shrink-0" />
                         <h3 className="text-lg font-semibold text-ink-950">{service.title}</h3>
                       </div>
 
@@ -138,7 +138,7 @@ export default function AboutSection() {
                         {service.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="px-2 py-0.5 text-[10px] font-medium bg-ink-200 text-ink-600 rounded-full border border-transparent group-hover:border-blue-500/30 group-hover:text-blue-300 transition-colors"
+                            className="px-2 py-0.5 text-[10px] font-medium bg-ink-200 text-ink-600 rounded-full border border-transparent group-hover:border-brand-500/30 group-hover:text-brand-300 transition-colors"
                           >
                             {tag}
                           </span>
