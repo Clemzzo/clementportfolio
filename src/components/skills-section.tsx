@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { Code, Database, Server, Layout, Cpu, Wrench, Braces, Layers, Target } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import { fadeInUp } from '@/lib/motion'
+import SectionHeader from '@/components/section-header'
 
 const TECH_ICONS: Record<string, string> = {
   'Next.js': '/next.svg',
@@ -173,18 +174,14 @@ export default function SkillsSection() {
     <section id="skills" className="py-24 bg-ink-0">
       <div className="max-w-7xl mx-auto px-6">
 
-        <motion.div {...fadeInUp} className="mb-16 max-w-2xl">
-          <span className="text-brand-400 text-sm font-semibold uppercase tracking-wider">Stack</span>
-          <h2 className="text-4xl md:text-5xl font-bold text-ink-950 mt-2 tracking-tight">
-            Tech Arsenal
-          </h2>
-          <p className="text-ink-600 mt-4 text-[15px] leading-relaxed">
-            The modern toolkit I reach for to design, build, and ship
-            scalable, high-performance products end-to-end.
-          </p>
-        </motion.div>
+        <SectionHeader
+          id="skills"
+          label="Stack"
+          title="Tech Arsenal"
+          description="The modern toolkit I reach for to design, build, and ship scalable, high-performance products end-to-end."
+        />
 
-        <div className="grid md:grid-cols-2 gap-5">
+        <div className="mt-10 md:mt-14 grid md:grid-cols-2 gap-5">
           {skillCategories.map((category, index) => (
             <motion.div
               key={category.title}

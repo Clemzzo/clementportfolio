@@ -8,6 +8,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { Send, ArrowUpRight, CheckCircle2, AlertCircle } from 'lucide-react'
 import { contactItems } from '@/lib/contact'
 import { fadeInUp } from '@/lib/motion'
+import SectionHeader from '@/components/section-header'
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' })
@@ -48,18 +49,14 @@ export default function ContactSection() {
     <section id="contact" className="py-24 bg-ink-50">
       <div className="max-w-7xl mx-auto px-6">
 
-        <motion.div {...fadeInUp} className="mb-16 max-w-2xl">
-          <span className="text-brand-400 text-sm font-semibold uppercase tracking-wider">Contact</span>
-          <h2 className="text-4xl md:text-5xl font-bold text-ink-950 mt-2 tracking-tight">
-            Let&apos;s Work Together
-          </h2>
-          <p className="text-ink-600 mt-4 text-[15px] leading-relaxed">
-            Have a project in mind, a role to fill, or just want to say hello?
-            Drop a message. I usually reply within 24 hours.
-          </p>
-        </motion.div>
+        <SectionHeader
+          id="contact"
+          label="Contact"
+          title="Let's Work Together"
+          description="Have a project in mind, a role to fill, or just want to say hello? Drop a message. I usually reply within 24 hours."
+        />
 
-        <div className="grid lg:grid-cols-5 gap-6">
+        <div className="mt-10 md:mt-14 grid lg:grid-cols-5 gap-6">
 
           <motion.div {...fadeInUp} className="lg:col-span-2 space-y-4">
             <div className="bg-ink-100 rounded-2xl p-7 border border-ink-400/80 hover:border-brand-500/60 transition-colors">

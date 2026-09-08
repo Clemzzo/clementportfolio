@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { Monitor, Smartphone, Server, Palette } from 'lucide-react'
 import { fadeInUp } from '@/lib/motion'
 import { projects } from '@/lib/projects'
+import SectionHeader from '@/components/section-header'
 
 const facts = [
   { k: 'Experience', v: '3+ years' },
@@ -44,18 +45,18 @@ export default function AboutSection() {
     <section id="about" className="py-24 bg-ink-50">
       <div className="max-w-7xl mx-auto px-6">
 
-        {/* Header */}
-        <motion.div {...fadeInUp} className="mb-12 md:mb-16">
-          <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-brand-400">
-            About
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-ink-950 mt-3 tracking-tight max-w-3xl text-balance">
-            The developer behind
-            <span className="font-instrument italic font-normal text-brand-400"> the product.</span>
-          </h2>
-        </motion.div>
+        <SectionHeader
+          id="about"
+          label="About"
+          title={
+            <>
+              The developer behind
+              <span className="font-instrument italic font-normal text-brand-400"> the product.</span>
+            </>
+          }
+        />
 
-        <div className="grid grid-cols-12 gap-x-6 gap-y-12">
+        <div className="mt-10 md:mt-14 grid grid-cols-12 gap-x-6 gap-y-12">
 
           {/* Bio + fact sheet */}
           <motion.div {...fadeInUp} className="col-span-12 lg:col-span-7">

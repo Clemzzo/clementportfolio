@@ -174,6 +174,12 @@
   transform: translateX(120%);
 }
 
+/* Card bloom — a brand wash anchored to the top edge of a card. It sits at
+   opacity 0 and is faded in on hover by the utilities at the call site. */
+.card-bloom {
+  background: radial-gradient(120% 80% at 50% 0%, rgba(235, 120, 12, 0.16), transparent 70%);
+}
+
 /* Hero decoration ---------------------------------------------------- */
 
 /* Faint 64px graph paper behind the hero */

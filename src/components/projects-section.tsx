@@ -6,7 +6,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { projects, type Project } from '@/lib/projects'
 import { GithubIcon } from '@/components/icons'
-import { fadeInUp } from '@/lib/motion'
+import SectionHeader from '@/components/section-header'
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
@@ -103,32 +103,17 @@ export default function ProjectsSection() {
     <section id="projects" className="py-24 bg-ink-50">
       <div className="max-w-7xl mx-auto px-6">
 
-        {/* Header — numbered index and label beside the statement */}
-        <motion.header
-          {...fadeInUp}
-          className="grid grid-cols-12 gap-x-6 gap-y-4 border-t border-ink-400/60 pt-6 md:pt-8"
-        >
-          <div className="col-span-12 md:col-span-3 flex items-center gap-3">
-            <span className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-brand-500/40 font-mono text-[10px] text-brand-400">
-              02
-            </span>
-            <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink-700">
-              Selected work
-            </span>
-          </div>
-
-          <div className="col-span-12 md:col-span-9">
-            <h2 className="font-semibold text-3xl md:text-5xl lg:text-[3.4rem] leading-[1.03] tracking-tight text-ink-950 text-balance">
+        <SectionHeader
+          id="projects"
+          label="Selected work"
+          title={
+            <>
               Things I&apos;ve shipped
               <span className="font-instrument italic font-normal text-brand-400"> end to end.</span>
-            </h2>
-            <p className="mt-4 max-w-2xl text-ink-700 text-sm md:text-base leading-relaxed">
-              A selection of products, applications, and systems I&apos;ve designed, built, and
-              shipped — focused on solving real problems with clean, scalable, production-ready
-              code. Each card opens a full case study.
-            </p>
-          </div>
-        </motion.header>
+            </>
+          }
+          description="A selection of products, applications, and systems I've designed, built, and shipped — focused on solving real problems with clean, scalable, production-ready code. Each card opens a full case study."
+        />
 
         <div className="mt-10 md:mt-14 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
           {projects.map((project, index) => (

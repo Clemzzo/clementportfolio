@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { fadeInUp } from '@/lib/motion'
+import SectionHeader from '@/components/section-header'
 
 type Role = {
   role: string
@@ -52,18 +52,18 @@ export default function ExperienceSection() {
     <section id="experience" className="py-24 bg-ink-0">
       <div className="max-w-7xl mx-auto px-6">
 
-        {/* Header */}
-        <motion.div {...fadeInUp} className="mb-12 md:mb-16 text-center">
-          <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-brand-400">
-            Experience
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-ink-950 mt-3 tracking-tight max-w-3xl mx-auto text-balance">
-            Three years, four products
-            <span className="font-instrument italic font-normal text-brand-400"> still shipping.</span>
-          </h2>
-        </motion.div>
+        <SectionHeader
+          id="experience"
+          label="Experience"
+          title={
+            <>
+              Three years, four products
+              <span className="font-instrument italic font-normal text-brand-400"> still shipping.</span>
+            </>
+          }
+        />
 
-        <ol className="space-y-3">
+        <ol className="mt-10 md:mt-14 space-y-3">
           {roles.map((item, index) => (
             <motion.li
               key={item.company}
